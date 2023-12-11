@@ -1,7 +1,7 @@
-const img1 = "./../img/prints/leopard2.jpg";
-const img2 = "./../img/prints/fox2.jpg";
-const img3 = "./../img/prints/wolf2.jpg";
-const img4 = "./../img/prints/bear2.jpg";
+const img1 = "./../img/prints/leopard2.svg";
+const img2 = "./../img/prints/fox2.svg";
+const img3 = "./../img/prints/wolf2.svg";
+const img4 = "./../img/prints/bear2.svg";
 
 var footprintImages = [img1, img2, img3, img4];
 var color = localStorage.getItem("mycolor");
@@ -171,25 +171,46 @@ setTimeout(() => {
 
             // Отобразить массив следов в контейнере
             for (let j = 0; j < images.length; j++) {
+                var answerContainer = document.createElement("div");
+                answerContainer.className = "answerPicture";
+
+                // Create a container for the image
+                var imageContainer = document.createElement("div");
+                imageContainer.className = "imageContainer";
+
                 var answerElement = document.createElement("img");
                 answerElement.className = "answerPicture";
                 answerElement.src = images[j];
                 answerElement.alt = "След " + (j + 1);
-                // Добавить анимацию к каждому элементу
-                // var animateElement = getElementById("svg_bubble");
-                // answerElement.appendChild(animateElement);
+
+                // Append the image to the image container
+                imageContainer.appendChild(answerElement);
+
+                // Append the image container to the answer container
+                answerContainer.appendChild(imageContainer);
+
+                // Clone the animated element and set its position
+                var animateClone = document.getElementById("svg_bubble").cloneNode(true);
+                animateClone.style.position = 'absolute';
+                animateClone.style.top = '0';
+                animateClone.style.left = '0';
+                animateClone.style.zIndex = '1'; // Ensure the animation is on top
+
+                // Append the animated element to the answer container
+                answerContainer.appendChild(animateClone);
 
                 // при наведении мыши вызвать функцию handleMouseOver
-                answerElement.addEventListener("mouseover", createMouseOverHandler(answerElement));
+                answerContainer.addEventListener("mouseover", createMouseOverHandler(answerElement));
                 // при снятии мыши вызвать функцию handleMouseOut
-                answerElement.addEventListener("mouseout", createMouseOutHandler(answerElement));
+                answerContainer.addEventListener("mouseout", createMouseOutHandler(answerElement));
 
                 // Проверка ответа при клике
-                answerElement.addEventListener("click", function () {
+                answerContainer.addEventListener("click", function () {
                     checkAnswer(j, i);
                 });
-
-                arrayContainer.appendChild(answerElement);
+                answerContainer.appendChild(answerElement);
+                answerContainer.appendChild(animateClone);
+                arrayContainer.appendChild(answerContainer);
             }
         }
     }

@@ -46,7 +46,7 @@ a {
     max-width: 1140px;
     /* контейнер по центру страницы */
     margin: 0 auto;
-    height: auto;
+    height: 80%;
     display: flex;
     flex-direction: column;
     z-index: 9;
@@ -182,4 +182,37 @@ a {
 
 .incorrect-answer-question{
 border-color: coral;
+}
+
+#sample-image{
+    max-width: 80%;
+    max-height: 80%;
+}
+.answerPicture {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+}
+
+/* Styles for the image containers */
+.imageContainer {
+    position: relative;
+    width: auto; 
+    height: auto; 
+}
+
+/* Styles for the static images */
+.answerPicture img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+/* Styles for the animated elements */
+#svg_bubble {
+    width: 110%; 
+    height: 110%; 
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 1;
 }
