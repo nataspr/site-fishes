@@ -74,7 +74,7 @@ setTimeout(() => {
 // остановка игры - время вышло
 function StopGame() {
     // проигрыш - очки обнуляются
-    curPlayerData.score = 0;
+    curPlayerData.score = score;
     localStorage.setItem(key, JSON.stringify(curPlayerData));
     //вывести окно проигрыша
     showBadResults();
