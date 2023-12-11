@@ -171,13 +171,13 @@ setTimeout(() => {
 
             // Отобразить массив следов в контейнере
             for (let j = 0; j < images.length; j++) {
-                var answerElement = document.createElement("div");
+                var answerElement = document.createElement("img");
                 answerElement.className = "answerPicture";
                 answerElement.src = images[j];
                 answerElement.alt = "След " + (j + 1);
                 // Добавить анимацию к каждому элементу
-                var animateElement = getElementById("svg_bubble");
-                answerElement.appendChild(animateElement);
+                // var animateElement = getElementById("svg_bubble");
+                // answerElement.appendChild(animateElement);
 
                 // при наведении мыши вызвать функцию handleMouseOver
                 answerElement.addEventListener("mouseover", createMouseOverHandler(answerElement));
