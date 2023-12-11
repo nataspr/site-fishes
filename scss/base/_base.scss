@@ -1,0 +1,78 @@
+//подключение шрифтов (из гугл Fonts)
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:ital,wght@0,700;1,400&family=Roboto:ital,wght@1,300&display=swap');
+
+//базовый шрифт для текста
+body{
+    font-family: $font-main;
+    background-color: $fon;
+    color: $white;
+    font-size: 16px;
+}
+
+a{
+    color: $white;
+    // для плавного перехода
+    transition: color 0.2s ease-in;
+    //при нажатии на ссылку меняется цвет
+    &:hover{
+        color: $accent;
+    }
+}
+
+.container{
+    // отступы, чтобы при уменьш экрана контент не прилипал
+    // к краям браузера
+    padding-left: 15px;
+    padding-right: 15px;
+    // в reset прописано, что есть border-box
+    // то ширина уже включает в себя паддинги, поэтому нужно увеличить ширину на размер паддингов
+    max-width: 1140px;
+    // контейнер по центру страницы
+    margin: 0 auto;
+
+    &--small{
+        // при уменьш экрана размер конт тоже уменьшится
+        max-width: 761px;
+    }
+}
+
+.text-right{
+    text-align: right;
+}
+
+.visually-hidden{
+    // маленький пиксель скрытый
+    height: 1px;
+    overflow: hidden;
+    width: 1px;
+    // чтобы не влиял на layout
+    position: absolute;
+    // убирает видимость
+    clip:rect(1px 1px 1px 1px);
+    clip-path: inset(50%);
+    // предотвращает пропуски между словами для sreen reader
+    white-space: nowrap;
+}
+
+// все заголовки 2 на стр
+.title-2{
+    font-size: 36px;
+    font-family: $font-accent;
+    color: $accent;
+    font-weight: 700;
+
+    // уменьшение заголовка при уменьшении экрана
+    @include mediaTablet{
+        font-size: 28px;
+    }
+}
+
+.email{
+    color: $accent;
+    font-weight: 700;
+}
+
+// нельзя скроллить
+.no-scroll{
+    overflow-y: hidden;
+}

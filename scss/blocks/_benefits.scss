@@ -1,0 +1,67 @@
+.benefits{
+// при маленьком экране цифра II выходит за края контейнера и сверху, и снизу => запретить скролл
+    overflow: hidden;
+
+    padding: 120px 0px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center; 
+
+    // для размещения декор элемента 2
+    &::after{
+        content: "II";
+        
+        // щт половины экрана отступаем еще 550пк(еще половина контейнера)
+        left: calc(50% + 555px);
+        //пододвинуть влево на половину ширины псевдоэлемента (x, y)
+        transform: translate(-50%, 0%);
+               
+        // подключение миксина
+        @include decorNumber;
+    }
+}
+
+.benefits-row{
+    display: flex;
+    column-gap: 70px;
+
+    // при маленьком окне перестроение иконок в колонку
+    @include mediaTablet{
+        display: grid;
+        // автоматические колонки, в зависимости от размера ряда (они максимально заполняют ряд), через minmax-размер колонок
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 40px;
+    }
+    
+}
+
+.benefits-item{
+    text-align: center;
+    // padding-left: 20px;
+}
+
+.benefits-item-img{
+    margin-bottom: 54px;
+
+
+    // уменьшение картинок при маленьком экране
+    @include mediaTablet{
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+}
+
+.benefits-item-text{
+    // text-align: center;
+    font-size: 20px;
+    line-height: 1.35;
+    font-family: $font-secondary;
+    font-weight: 300;
+// уменьшение текста при маленьком экране
+@include mediaTablet{
+    font-size: 16px;
+}
+
+}

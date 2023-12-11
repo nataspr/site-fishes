@@ -1,0 +1,142 @@
+.header{
+    display: flex;
+    // элементы выровняны в колонку
+    flex-direction: column;
+    // выравнивание по основной оси
+    justify-content: space-between;
+    min-height: 840px;
+    // оформление картинки шапки из Figma
+    background: linear-gradient(180deg, #8EA8C6 11.98%, rgba(45, 52, 60, 0.38) 51.04%, #8EA8C6 92.19%),
+     url("./../img/header/header-bg.jpg"), lightgray 50% / cover no-repeat;
+    // внутренние отступы, чтобы текст не прилегал к границе шапки
+    padding-top: 30px;
+    padding-bottom: 75xp;
+
+    // измененная шапка для маленьких экранов
+    @include mediaTablet{
+        min-height: unset;
+        row-gap: 50px;
+    }
+}
+
+.header_top-row{
+    display: flex;
+    // элементы выровняны в колонку
+    justify-content: center;
+    // выравнены по центру
+    align-items: center;
+}
+// измененное меню на маленьком экране при добавлении данного класса к header_top-row
+.header_top-row--mobile{
+    // отображаем поверх всего экрана
+    position: fixed;
+    background-color: lightblue;
+    // растянуть его на всю ширину
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    // чтобы был самым верхним слоемБ выше моб навигации ничего нет
+    z-index: 99;
+    // все что внутри него выровнять флексом в колонку
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    row-gap: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    // он должен отобоазиться
+    // когда есть этот индефикатор, то у внутреннего элемента header_nav меняем свойства
+    .header_nav{
+        display: block;
+    }
+    //перестраиваем список при маленьком экране
+    .nav_list{
+        flex-direction: column;
+        align-items: center;
+        row-gap: 30px;
+    }
+    // при маленьком экране кнопка уезжат вверх вправо
+    .header_nav-btn{
+        position: fixed;
+        top: 50px;
+        right: 15px;
+    }
+}
+
+.header_nav-btn{
+    padding-left: 20px;
+    // изначально скрыт
+    display: none;
+    // на 999пк и меньше кнопка становится видна
+    // медиа запрос в миксине
+    @include mediaTablet{
+        //передается то, что нужно подставить в content
+        display: block;        
+    }
+}
+
+.header_nav{
+    // на узких экранах скрыть обычную навигацию, оставить кнопку
+    // @media screen and (max-width: $tablet) {
+    //     display: none;
+    // }
+    @include mediaTablet{
+        //передается то, что нужно подставить в content
+        display: none;        
+    }
+}
+
+.header_title{
+    // позиционирование относительно этого элемента
+    position: relative;
+    text-align: center;
+    font-size: 48px;
+    font-family: $font-accent;
+    color: $accent;
+    // толщина bold из Google Fonts
+    font-weight: 700;
+    padding-bottom: 200px;
+    // изменения заголовка на маленьком экране
+    @include mediaTablet{
+        font-size: 32px;
+        padding-bottom: 181px;
+    }
+}
+
+.header_title_icon{
+    // позиц-ние отн-но title
+    position: absolute;
+    bottom: 0;
+    // перенос мыши вниз ровно по центру
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+// логотип из css под заголовком
+.header_title_logo{
+    position: absolute;
+    bottom: 55px;
+    height: 100px;
+    width: 100px;
+    // перенос лого вниз ровно по центру
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.header_footer{
+    // размещение по колонкам как на разметке
+    display: grid;
+    // размещение половина на половину - 2 колонки
+    grid-template-columns: 1fr 1fr;
+    // отступ от колонки
+    gap: 30 px;
+    // при маленьком экране адрес и тел будут в столбик
+    @include mediaTablet{
+        display: flex;
+        // отступ между рдами
+        row-gap: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+}

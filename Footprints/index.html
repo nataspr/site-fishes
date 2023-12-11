@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuquariumFish</title>
+    <link rel="stylesheet" href="./css/footprintsMain.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="buttons-container">
+            <!-- Кнопка для перехода на главную страницу -->
+            <div class="round-button home-button">
+                <a href="./../index.html">
+                    <img src="./img/icons/house.svg"></img>
+                </a>
+            </div>
+            <!-- Кнопка вопросов -->
+            <div class="round-button question-button" id="instructionBtn">
+                <img src="./img/icons/question.svg"></img>
+            </div>
+            <!-- Кнопка для отображения настроек -->
+            <div class="round-button settings-button" id="settingsBtn">
+                <img src="./img/icons/settings.svg"></img>
+            </div>
+
+            <!-- Кнопка для отображения рейтинга -->
+            <div class="round-button ratings-button" id="ratingBtn">
+                <img src="./img/icons/rank.svg"></img>
+            </div>
+        </div>
+
+        <div class="center-container">
+            <!-- Центральный контейнер с элементами -->
+            <div class="title">
+                <h2 class="title-2">Давайте</h2>
+                <h2 class="title-2">познакомимся</h2>
+            </div>
+
+            <div class="name-container">
+                <input type="text" id="nameInput" placeholder="Имя" oninput="start()">
+            </div>
+        </div>
+        <div class = "motion-container">
+            <!-- Кнопка для сброса данных и перезапуска -->
+            <button id="resetBtn">Заново</button>
+        </div>
+        
+    </div>
+    <!-- подключение js файла -->
+    <script src="./js/footprintsMain.js"></script>
+</body>
+
+</html>

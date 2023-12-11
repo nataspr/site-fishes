@@ -1,0 +1,28 @@
+//Base style settings
+//подключение базовых чтилей из другого scss
+@import './base/reset';
+
+//переменные
+@import './base/vars';
+// подключение миксинов
+@import './base/mixins';
+//основные стили для страницы
+@import './base/base';
+
+// Дизайн разных блоков сайта
+@import './blocks/header';
+@import './blocks/nav';
+// подключение рисунка кнопки css (бургер- меню)
+@import './blocks/nav-icon';
+@import './blocks/info';
+@import './blocks/benefits';
+@import './blocks/fishes';
+@import './blocks/card';
+@import './blocks/cta';
+@import './blocks/form';
+@import './blocks/video';
+@import './blocks/section-map';
+@import './blocks/feedback';
+@import './blocks/footer';
+// подключение лого из css
+@import './blocks/mylogo';

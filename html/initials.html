@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuquariumFish</title>
+    <link rel="stylesheet" href="./../css/main.css">
+    <link rel="stylesheet" href="./../css/initials.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <!-- логотип + навигация -->
+        <div class="header_top">
+            <div class="container">
+                <!-- верхний ряд -->
+                <div class="header_top-row">
+                    <a href="#footer">
+                        <img src="./../img/logo.svg" alt="AquaFish">
+                    </a>
+                    <!--чтобы было скрытие в моб версии  -->
+                    <div class="header_nav">
+                        <nav class="nav">
+                            <ul class="nav_list">
+                                <li><a href="./../index.html">Главная</a></li>
+                                <li><a href="./soderzanie.html">Содержание</a></li>
+                                <li><a href="./catalog.html">Каталог рыб</a></li>
+                                <li><a href="./aquariums.html">Аквариумы</a></li>
+                                <li><a href="./contacts.html">Контакты</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- кнопка с навигацией для моб, на десктопе - скрыта -->
+                    <div class="header_nav-btn">
+                        <button class="nav-icon-btn">
+                            <div class="nav-icon"></div>
+                        </button>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+       <!-- Заголовок сайта -->
+       <div class="container">
+        <h1 class="header_title">Аквариумные рыбки<br>
+            Уход и разведение
+            <!-- логотип css в уведличенном паддинге -->
+            <div class="header_title_logo">
+                <div class="fon_my">
+                    <div class="logo_my"><!--"холст для рисунка"-->
+                       <!-- тело и хвост скалярии -->
+                        <div class="scal_body">
+                            <div class="tail"></div>
+                            <div class="b2"></div>
+                            <div class="b3"></div>
+                       </div>
+                       <!-- плавники-->
+                       
+                       <div class="lasta1"></div>
+                       <div class="lasta2"></div>
+                       <!-- полоски -->
+                       <div class="stripe1"></div>
+                       <div class="stripe2"></div>
+                       <!-- глаз -->
+                       <div class="eye"></div>
+                       <!-- пузыри -->
+                       <div class="buble1"></div>
+                       <div class="buble2"></div>
+                    </div>
+                </div>   
+            </div>
+                <!-- ссылка при нажатии на мышь на следующую часть страницы с плюсами -->
+                <a href="#main">
+                    <img src="./../img/header/mouse.svg" alt="scroll-mouse" class="header_title_icon">
+                </a>
+            </h1>
+        </div>
+        <!-- нижняя часть -->
+        <div class="header_footer">
+                <!-- ссылка на карту -->
+                <!-- выравнивание текста иконки по правой стороне -->
+                <div class="text-right">
+                    <a href="#footer" class="info info--map">Политехническая ул. 29</a>
+                </div>
+                
+              
+                <!-- ссылка на телефон -->
+                <a href="#footer" class="info info--tel">8 (812) 111-22-33</a>
+                
+        </div>
+    </header>
+    <main id="main">
+        <h2 class="title-2">LOGO</h2>
+<div class="fon some_facts last_paragraph">
+    <div class="logo"><!--"холст для логотипа"-->
+
+        <svg id="letter" onclick="addTransformedClass(event)" 
+             width="200" height="200" viewBox="0 0 200 200" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <!-- буква N -->
+            <path id="animatedPath" d="M1 68V154C1 154.552 1.44772 155 2 155H12.0909C12.6432 155 13.0909 154.552 13.0909 154V85.2832C13.0909 84.2542 14.458 83.8961 14.9625 84.7929L54.1678 154.49
+            C54.3449 154.805 54.6781 155 55.0394 155H70C70.5523 155 71 154.552 71 154V68C71 67.4477 70.5523 67 70 67H59.9091C59.3568 67 58.9091 67.4477 58.9091 68V136.09C58.9091 137.12 57.5385 137.477 57.036 136.577L18.468 67.5124
+            C18.2913 67.196 17.9573 67 17.5949 67H2C1.44772 67 1 67.4477 1 68Z" stroke="black" fill="purple"
+                  stroke-width="2"></path>
+            <!-- буква S -->
+            <path id="animatedPath2" d="M109.765 17.4761L99.8527 25.535C99.4717 25.8448 98.9221 25.8321 98.5558 25.505L86.2633 14.5279
+            C86.08 14.3642 85.8429 14.2737 85.5972 14.2737H65.0929C64.8544 14.2737 64.6238 14.3589 64.4427 14.514L53.5838 23.8068
+            C53.3618 23.9968 53.234 24.2744 53.234 24.5666V28.5466C53.234 28.8476 53.3696 29.1326 53.6032 29.3225L64.4478 38.1391
+            C64.6261 38.284 64.8488 38.3631 65.0786 38.3631H95.9497C96.1881 38.3631 96.4187 38.4483 96.5999 38.6034L116.65 55.7621
+            C116.872 55.9521 117 56.2297 117 56.5219V70.3417C117 70.6385 116.868 70.9199 116.64 71.1099L95.4483 88.7682C95.2686 88.918 95.0421 89 94.8082 89H54.178C53.9395 89 53.709 88.9148 53.5278 88.7598
+            L36.8878 74.5195C36.4214 74.1204 36.4214 73.3992 36.8878 73L46.2784 64.9637C46.6466 64.6486 47.1879 64.6429 47.5627 64.9503L60.4256 75.4995C60.6044 75.6461 60.8285 75.7263 61.0597 75.7263
+            H89.0703C89.3001 75.7263 89.5229 75.6471 89.7011 75.5022L100.546 66.6856
+            C100.779 66.4957 100.915 66.2107 100.915 65.9097V61.9144C100.915 61.631 100.795 61.361 100.584 61.1714
+            L90.2853 51.8939C90.1016 51.7284 89.8632 51.6369 89.616 51.6369H58.7737C58.5353 51.6369 58.3047 51.5517 58.1235 51.3966L38.0732 34.2379C37.8512 34.0479 37.7234 33.7703 37.7234 33.4781V18.1926C37.7234 17.8906 37.8599 17.6048 38.0948 17.4149
+            L58.1293 1.22227C58.3072 1.07845 58.5291 1 58.7578 1H92.4939C92.7378 1 92.9732 1.0891 93.156 1.25055L109.797 15.9507
+            C110.26 16.3597 110.245 17.0864 109.765 17.4761Z" fill="blue" stroke="black" stroke-width="2">
+            </path>
+            <!-- пути для движения -->
+            <path id="move1" d=" M 25 40 A 10 14 0 1 1 25 15" fill="none" stroke="none" stroke-width="2"/>
+            <!-- анимация движения -->
+            <animateMotion dur="3s" repeatCount="1" href="#animatedPath" begin="letter.mouseover" fill="freeze"
+                           calcMode="discrete" restart="whenNotActive">
+                <mpath href="#move1"/>
+            </animateMotion>
+            <animateMotion dur="3s" repeatCount="1" href="#animatedPath2" begin="letter.mouseover +0.5s" fill="freeze"
+                           calcMode="discrete" restart="whenNotActive">
+                <mpath href="#move1"/>
+            </animateMotion>
+
+            <!-- анимация (увеличение) по кнопке -->
+            <animateTransform attributeName="transform"
+                              type="scale"
+                              additive="sum"
+                              from="0 0"
+                              to="1 1"
+                              begin="indefinite"
+                              dur="1s"
+                              repeatCount="1"
+                              restart="whenNotActive"
+                              id="transformAnimationId"
+            />
+
+            <!-- рыба с движением -->
+            <image href="./../img/initials/shark.png" width="60" height="60" x="10" y="30" style="display: none;" id="shark">
+                <animate attributeType="XML" attributeName="x" begin="infinite" dur="5s" values="180; 80; 60; 40; 20; 10" repeatCount="1" id="sharkMove2" restart="whenNotActive"/>
+
+                <animate attributeType="XML" attributeName="y" begin="infinite" dur="5s" values="30; 40; 25; 28; 40; 30" repeatCount="1" id="sharkMove1" restart="whenNotActive"/>
+            </image>
+            <text x="50" y="150" font-size="20" fill="black" class="textRotation" id="text" style="display: none;">AquaFish.ru</text>
+            <!-- фильтр сепии -->
+            <defs>
+                <filter id="sepia-filter">
+                        <fecolormatrix type="matrix"
+                        values="0.343 0.669 0.119 0 0
+                        0.249 0.626 0.130 0 0
+                        0.172 0.334 0.111 0 0
+                        0     0     0     1 0" />
+                </filter>
+              </defs>
+        </svg>
+
+    </div>
+    <div>
+        <button onclick="startTransformAnimation()">Animate!</button>
+    </div>
+    <div>
+        <button onclick="addMouseOverClass()">Refresh!</button>
+    </div>
+    
+</div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer_grid">
+                <div class="footer_logo">
+                    <a href="#header">
+                        <img src="./../img/logo.svg" alt="AquaFish" id="footer">
+                    </a>
+                </div>
+                <div class="footer_nav">
+                    <nav>
+                        <ul class="footer_nav-list">
+                            <li><a href="./footprintsMain.html">Следы</a></li>
+                            <li><a href="./soderzanie.html">Содержание</a></li>
+                            <li><a href="./catalog.html">Каталог рыб</a></li>
+                            <li><a href="./aquariums.html">Аквариумы</a></li>
+                            <li><a href="./contacts.html">Контакты</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="footer_nav">
+                    <nav>
+                        <ul class="footer_nav-list">
+                            <li><a href="./content.html">Контент</a></li>
+                            <li><a href="./diggers.html">Землекопы</a></li>
+                            <li><a href="./initials.html">Логотип</a></li>
+                            <li><a href="./domTest.html">DOM-test</a></li>
+                            <li><a href="./words.html">Перетаскивание</a></li>
+                            <!-- <li><a href="#!">Услуги ветеринара</a></li>
+                            <li><a href="#!">Программа лояльности</a></li> -->
+                        </ul>
+                    </nav>
+                </div>
+                <div class="footer_address">
+                    
+                        <ul class="footer_nav-list">
+                            <li>Адрес: Политехническая ул. 29</li>
+                            <li><a href="tel:+78121112233">Телефон: 8 (812) 111-22-33</a></li>
+                            <li>Отдел продаж: 10:00 - 20:00</li>
+                            <li>E-mail: <a href="mailto:aaa@fishes.ru" class="email">aaa@fishes.ru</a></li>
+                        </ul>
+                        <ul class="footer_socials">
+                            <li><a href="#!"><img src="./../img/socials/youtube.svg"></a></li>
+                            <li><a href="#!"><img src="./../img/socials/vk.svg"></a></li>
+                            <li><a href="#!"><img src="./../img/socials/facebook.svg"></a></li>
+                        </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- подключение js файла -->
+    <script src="./../js/main.js"></script>
+    <script src="./../js/initials.js"></script>
+</body>
+</html>

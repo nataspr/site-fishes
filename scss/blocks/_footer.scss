@@ -1,0 +1,51 @@
+.footer{
+    background-color: $footer-bg;
+    padding-top: 72px;
+    padding-bottom: 51px;
+    font-size: 14px;
+    // пробелы между словами 5% от размера шрифта
+    letter-spacing: 0.05rem;
+
+    // уменьшение отступов при уменьшении экрана
+    @include mediaTablet{
+        padding-top: 36px;
+        padding-bottom: 25px;
+    }
+}
+
+.footer_grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    // распределение по колонкам при уменьшении экрана
+    @include mediaTablet{
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 40px;
+    }
+}
+
+.footer_logo{
+    // он сдвинут вверх относительно остальных колонок
+    margin-top: -12px;
+}
+
+.footer_nav{
+
+}
+
+.footer_nav-list{
+    display: grid;
+    gap: 15px;
+}
+
+.footer_address{
+    // между эл-ми в контейнере всегда будет по 20пк
+    display: grid;
+    gap: 20px;
+}
+
+.footer_socials{
+    display: flex;
+    column-gap: 22px;
+    align-items: center;
+}

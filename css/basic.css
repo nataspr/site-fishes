@@ -1,0 +1,36 @@
+/* картинки */
+.pic_effect {
+    box-shadow: 10px 10px 5px lightblue;
+    border-radius: 8px;
+    max-width: 20%;
+    height: auto;
+}
+
+.pic_right {
+    float: right;
+    margin: 20px 30px 20px 20px;
+}
+
+.pic_left {
+    float: left;
+    margin: 20px 20px 20px 30px;
+}
+.scalary{
+    width: 50%;
+    height: auto;
+}
+.some_facts {
+    margin: 40px 30px;
+    text-align: justify;
+    text-indent:5%;  /* красная строка */
+    font-size: 15pt;
+    text-indent: 1em;
+}
+
+.last_paragraph {
+	padding-bottom: 30px;
+}
+.nav{
+    display: flex;
+    align-items: center;
+}

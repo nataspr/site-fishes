@@ -1,0 +1,34 @@
+.fishes{
+    position: relative;
+    // для размещения декор элемента 3
+    &::before{
+        content: "III";
+        // щт половины экрана отступаем еще 550пк(еще половина контейнера)
+        right: calc(50% + 555px);
+        //пододвинуть враво на половину ширины псевдоэлемента (x, y)
+        transform: translate(50%, 0%);
+
+        @include decorNumber;
+    }
+}
+
+.fishes_title{
+    margin-bottom: 88px;
+    // уменьшение отступа при уменьшении экрана
+    @include mediaTablet{
+        margin-bottom: 44px;
+    }
+}
+
+// здесь лежат картотчки
+.fishes_cards{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    // для адаптивности, картинки меняются от мин размера до 1 картинки во весь столбец - макс
+    // grid-template-columns: repeat(auto-fit ,minmax(290px, 1fr));
+    gap: 30px;
+    // размещение картинок в колонку при маленьком экране
+    @include mediaTablet{
+        grid-template-columns: repeat(auto-fit ,minmax(290px, 1fr));
+    }
+}

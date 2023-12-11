@@ -1,0 +1,28 @@
+.feedback{
+    padding-bottom: 180px;
+
+    // уменьшение отступов при уменьшении экрана
+    @include mediaTablet{
+        padding-bottom: 90px;
+    }
+}
+
+.feedback_title{
+    margin-bottom: 38px;
+    // уменьшение отступов при уменьшении экрана
+    @include mediaTablet{
+        margin-bottom: 19px;
+    }
+}
+
+.feedback_form{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    align-items: center;
+    // построение в 1 колонку при уменьшении экрана
+    @include mediaTablet{
+        grid-template-columns: 1fr;
+    }
+}
+

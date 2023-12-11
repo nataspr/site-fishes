@@ -1,0 +1,23 @@
+    // для повторяющихся элементов
+    @mixin decorNumber{
+        position: absolute;
+        top: 0;
+        z-index: -1;
+
+        line-height: 1.15;
+        opacity: 0.03;
+        font-size: 400px;
+        font-family: $font-accent;
+    }
+
+    // миксин для медиа запроса
+    //при изменении экрана - на маленьком видно только одну кнопку
+    @mixin mediaTablet{
+         @media screen and (max-width: $tablet) {
+            @content;
+            // для данного класса указываем в какой ячейке он будет располагаться при уменьшении экрана
+            .form_privacy--button{
+                grid-row:4/5;
+            }
+        }
+    }

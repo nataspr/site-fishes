@@ -1,0 +1,282 @@
+.fon {
+    background-color: #8EA8C6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background-color: #FFFFFF;
+    overflow: hidden;
+  }
+  
+  .ground {
+    width: 200px;
+    height: 35px;
+    background-color: #F0E634;
+    position: absolute;
+    top: 82.5%;
+    left: 0px;
+  }
+  .stripe-ground1 {
+    width: 15px;
+    height: 35px;
+    background-color: #E7AB2A;
+    position: relative;
+    top: 0%;
+    left: 4%;
+  }/*7.5% - 1stripe*/
+  .stripe-ground2 {
+    width: 15px;
+    height: 35px;
+    background-color: #E7AB2A;
+    position: absolute;
+    top: 0%;
+    left: 16.5%;
+  }
+  .stripe-ground3 {
+    width: 15px;
+    height: 35px;
+    background-color: #E7AB2A;
+    position: absolute;
+    top: 0%;
+    left: 29%;
+  }
+  .stripe-ground4 {
+    width: 15px;
+    height: 35px;
+    background-color: #E7AB2A;
+    position: absolute;
+    top: 0%;
+    left: 41.5%;
+  }
+  .stripe-ground5 {
+    width: 15px;
+    height: 35px;
+    background-color: #E7AB2A;
+    position: absolute;
+    top: 0%;
+    left: 54%;
+  }
+  .stripe-ground6 {
+    width: 15px;
+    height: 35px;
+    background-color: #E7AB2A;
+    position: absolute;
+    top: 0%;
+    left: 66.5%;
+  }
+  .stripe-ground7 {
+    width: 15px;
+    height: 35px;
+    background-color: #E7AB2A;
+    position: absolute;
+    top: 0%;
+    left: 79%;
+  }
+  .stripe-ground8 {
+    width: 15px;
+    height: 35px;
+    background-color: #E7AB2A;
+    position: absolute;
+    top: 0%;
+    left: 90%;
+  }
+  /*водоросли*/
+  .bsmt {
+    position: absolute;
+    width: 159px;
+    height: 312px;
+    border-radius: 45%;
+    border-top: 0;
+    border-bottom: 0;
+    clip-path: inset(0% 0% 50% 0%); /*путь, который отрежет нижнюю часть водорослей*/
+}
+
+.v0 {
+    border-left: 10px solid #64d330;
+    border-right: 0;
+    left: 10%;
+    top:20%;
+}
+.v1 {
+  border-right: 10px solid #64d330;
+  border-left: 0;
+  left: 10%;
+  height: 250px;
+  top:30%;
+}
+
+.v2 {
+  border-left: 10px solid #64d330;
+  border-right: 0;
+  left: 45%;
+  height: 250px;
+  top:30%;
+}
+  /*рыба*/
+  .tail_small{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 20px solid #ecb847;
+    border-bottom: 10px solid transparent;
+    top: 66%;
+    right: 17%;
+    transform: rotate(180deg);
+  }
+  .tail_small_circle {
+    position: absolute;
+    background-color: white;
+    border: 5px solid white;
+    width: 18px;
+    height: 40px;
+    border-radius: 50%;
+    top: 60%;
+    right: 9%;
+    transform: rotate(180deg);
+  }
+  .body_small{
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    /* background-color: #ecb847; */
+    border-radius: 50%;
+    top: 65%;
+    right: 22%;
+    transform: rotate(180deg);
+    background: linear-gradient(90deg, #ecb847, white);
+  }
+  .eye_small{
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+    top: 70%;
+    right: 42%;
+  }
+  .strip1_small{
+    position: absolute;
+    width: 19px; /* Ширина полукруга */
+    height: 9px; /* Высота полукруга, половина от ширины */
+    background-color: transparent; /* Цвет фона полукруга */
+    border: 3px solid #b92635; /* Убираем границу полукруга */
+    border-top-left-radius: 30px; /* Радиус верхнего левого угла (равный ширине) */
+    border-top-right-radius: 30px; /* Радиус верхнего правого угла (равный ширине) */
+    border-bottom: 0;
+    transform: rotate(90deg);
+    top: 68.5%;
+    right: 33%;
+  }
+  .strip2_small,.strip3_small,.strip4_small{
+    position: absolute;
+    width: 9px; /* Ширина полукруга */
+    height: 4.5px; /* Высота полукруга, половина от ширины */
+    background-color: transparent; /* Цвет фона полукруга */
+    border: 2px solid #b92635; /* Убираем границу полукруга */
+    border-top-left-radius: 30px; /* Радиус верхнего левого угла (равный ширине) */
+    border-top-right-radius: 30px; /* Радиус верхнего правого угла (равный ширине) */
+    border-bottom: 0;
+    transform: rotate(90deg);
+    top: 66%;
+    right: 30%;
+  }
+  .strip2_small{
+    transform: rotate(80deg);
+  }
+  .strip3_small{
+    top: 70%;
+    right: 30%;
+    transform: rotate(90deg);
+  }
+  .strip4_small{
+    top: 74%;
+    right: 30%;
+    transform: rotate(100deg);
+  }
+
+  /* большая рыба */
+  .eye_big{
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: black;
+    border-radius: 50%;
+    top: 47%;
+    left: 37%;
+  }
+  .strip1_big{
+    position: absolute;
+    width: 28px; /* Ширина полукруга */
+    height: 14px; /* Высота полукруга, половина от ширины */
+    background-color: transparent; /* Цвет фона полукруга */
+    border: 3px solid #b92635; /* Убираем границу полукруга */
+    border-top-left-radius: 30px; /* Радиус верхнего левого угла (равный ширине) */
+    border-top-right-radius: 30px; /* Радиус верхнего правого угла (равный ширине) */
+    border-bottom: 0;
+    transform: rotate(-115deg);
+    top: 47%;
+    left: 27%;
+  }
+  .strip2_big, .strip3_big, .strip4_big{
+    position: absolute;
+    width: 12px; /* Ширина полукруга */
+    height: 6px; /* Высота полукруга, половина от ширины */
+    background-color: transparent; /* Цвет фона полукруга */
+    border: 2px solid #b92635; /* Убираем границу полукруга */
+    border-top-left-radius: 30px; /* Радиус верхнего левого угла (равный ширине) */
+    border-top-right-radius: 30px; /* Радиус верхнего правого угла (равный ширине) */
+    border-bottom: 0;
+    transform: rotate(-115deg);
+    top: 53%;
+    left: 22%;
+  }
+  .strip2_big{
+    top: 53%;
+    left: 22%;
+  }
+  .strip3_big{
+    top: 58%;
+    left: 24%;
+  }
+  .strip4_big{
+    top: 48%;
+    left: 20%;
+    
+  }
+  .tail_big{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-left: 30px solid #ecb847;
+    border-bottom: 15px solid transparent;
+    top: 53%;
+    left: 3%;
+    transform: rotate(-25deg);
+  }
+  .tail_big_circle {
+    position: absolute;
+    background-color: transparent;
+    border: 9px solid white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    top: 58%;
+    left: -6.5%;
+    transform: rotate(-25deg);
+  }
+  .body_big{
+    position: absolute;
+    width: 70px;
+    height: 35px;
+    background: linear-gradient(90deg, #ecb847, white);
+    border-radius: 50%;
+    top: 45%;
+    left: 10%;
+    transform: rotate(-25deg);
+  }

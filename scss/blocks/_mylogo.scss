@@ -1,0 +1,137 @@
+.fon_my {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo_my{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    background-color: transparent;
+    overflow: hidden;
+  }
+
+  .scal_body{
+    position: relative;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .tail{
+    position: absolute;
+    width: 0; 
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 20px solid black;
+    border-bottom: 10px solid transparent;
+    left: 10%;
+    top: 50%;
+  }
+//  тело абсолютная позиция относительно scal_body
+  .b2{
+    position: absolute;
+    width: 0; 
+    height: 0;
+    border-top: 20px solid transparent;
+    border-left: 30px solid black;
+    border-bottom: 20px solid transparent;
+    left: 22%;
+    top: 40%;
+  }
+  .b3{
+    position: absolute;
+    width: 36px; 
+    height: 36px; 
+    border-radius: 20%;
+    box-shadow: 10px 10px 0 0 black;
+    transform: rotate(-42deg);
+    left: -10%;
+    top: 42%;
+  }
+// плавники
+  .lasta1{
+    position: absolute;
+    background: transparent;
+    border: 3px solid black;
+    width: 10px;
+	height: 30px;
+	border-radius: 50%;
+    left: 28%;
+    top: 60%;
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 0;
+  }
+  .lasta2{
+    position: absolute;
+    background: transparent;
+    border: 3px solid black;
+    width: 10px;
+	height: 30px;
+	border-radius: 50%;
+    left: 25%;
+    top: 55%;
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 0;
+  }
+// глаз
+  .eye{
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: white;
+    border-radius: 50%;
+    top: 58%;
+    left: 42%;
+  }
+// полоски на рыбах
+  .stripe1{
+    position: absolute;
+    background: transparent;
+    border: 3px solid rgb(228, 228, 138);
+    width: 10px;
+	height: 25px;
+	border-radius: 50%;
+    left: 28%;
+    top: 49%;
+    border-top: 0;
+    border-bottom: 0;
+    border-right: 0;
+  }
+
+  .stripe2{
+    position: absolute;
+    background: transparent;
+    border: 3px solid rgb(228, 228, 138);
+    width: 6px;
+	height: 20px;
+	border-radius: 50%;
+    left: 33%;
+    top: 50%;
+    border-top: 0;
+    border-bottom: 0;
+    border-right: 0;
+  }
+// пузыри воздуха под водой
+.buble1{
+    position: absolute;
+    width: 10px; 
+    height: 10px;
+    border-radius: 50%;
+    left: 50%;
+    top: 40%;
+    border: 1px solid  $footer-bg;
+    background: linear-gradient(70deg, $fon, white);
+}
+.buble2{
+    position: absolute;
+    width: 20px; 
+    height: 20px;
+    background: linear-gradient(70deg, $fon, white);
+    border-radius: 50%;
+    left: 60%;
+    top: 15%;
+    border: 1px solid  $footer-bg;
+}

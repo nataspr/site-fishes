@@ -1,0 +1,126 @@
+/* первоначальная стилизация */
+.result-input {
+    width: auto;
+    border: solid black;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.zone-main{
+    display: flex;
+    width: auto;
+    padding: 20px;
+    margin: 20px;
+    height: 500px;
+}
+.zone-drop {
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex: 40%;
+    border: solid #9559A1;
+}
+
+
+.zone-input{
+    flex: 60%;
+    display: grid;
+    border: solid black;
+    height: auto;
+}
+
+.zone-start{
+    display: flex;
+    flex-basis: 60%;
+    margin: 10px;
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 977px) {
+    .zone-start {
+        display: grid;
+    }
+  }
+
+.zone-show{
+    padding: 20px;
+    margin: 20px;
+    border: solid blue;
+    height: 30%;
+    overflow: auto; /* Добавлено для прокрутки, если содержимое не помещается в выделенной области */
+    display: flex;
+    flex-wrap: wrap;
+}
+/* <p> элементы, которые являются потомками элемента с классом .zone-show */
+.zone-show div {
+    margin-right: 5px; /* Замените 10px на желаемое вами значение отступа */
+}
+
+.input-form {
+    flex: 70%;
+    position: relative;
+    overflow: hidden;
+}
+
+.input-form input {
+    width: 100%;
+    padding: 10px;
+    background: rgba(200, 200, 200, 0.5); /* Серый цвет с прозрачностью */
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+.input-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    filter: blur(10px); /* Увеличенное размытие для заднего фона */
+    z-index: -1;
+}
+.input-button {
+    flex: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-button button {
+    padding: 10px;
+    background-color: #b0b0b0; /* Неяркий серый цвет */
+    border: none;
+    border-radius: 5px; /* Закругленные края */
+    cursor: pointer;
+}
+
+.input-button button:hover {
+    background-color: #a0a0a0; /* Измененный цвет при наведении */
+}
+
+/* стилизация блоков */
+.blocks{
+    border: solid white;
+    padding: 5px;
+    margin: 5px;
+    background-color: #b0b0b0;
+    position: relative;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.blocks::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    filter: blur(8px); /* Увеличенное размытие для заднего фона */
+    z-index: -1;
+}

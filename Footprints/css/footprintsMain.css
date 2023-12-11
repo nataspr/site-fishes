@@ -1,0 +1,295 @@
+:root {
+      /* Цвета константы */
+    --color-standart: #EEE5D3;
+    /* голубой */
+    --color-blue: #C4DFFA;
+    /* зеленый */
+    --color-green: #D8E4E0;
+    /*  розовый */
+    --color-pink: #ECCFC1;
+    /* акцент */
+    --color-accent:#F4B3AF;
+    /* текущий цвет - его значение меняется */
+    --color-current:var(--color-standart);
+    /* Шрифты */
+    /* основной шрифт на странице */
+    --font-main: 'Raleway', sans-serif;
+    /* шрифт для заголовков */
+    --font-accent: 'Playfair Display', serif;
+    /* шрифт для остального */
+    --font-secondary:'Roboto', sans-serif;
+}
+
+body{
+    font-family: var(--font-main);
+    background-color: var(--color-current);
+    color: white;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+a{
+    color: white;
+    /* для плавного перехода */
+    transition: color 0.2s ease-in;
+    /* при нажатии на ссылку меняется цвет */
+    ::active{
+        color: var(--font-main);
+    }
+}
+
+.container{
+    /* отступы, чтобы при уменьш экрана контент не прилипал */
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1140px;
+    /* контейнер по центру страницы */
+    margin: 0 auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 9;
+}
+
+@media screen and (max-width: 977px) {
+    /* при уменьш экрана размер конт тоже уменьшится */
+    .container {
+        max-width: 761px;
+    }
+}
+
+.text-right{
+    text-align: right;
+}
+
+.title{
+    margin: 10px;
+    text-align: center
+}
+/* все заголовки 2 на стр */
+.title-2{
+    font-size: 36px;
+    font-family: var(--font-accent);
+    color: var(--color-accent);
+    font-weight: 700;
+    margin: 0;
+}
+
+ /* уменьшение заголовка при уменьшении экрана */
+@media screen and (max-width: 977px) {
+    .title-2 {
+        font-size: 28px;
+    }
+}
+
+/* следы */
+.footprint {
+    position: absolute;
+    opacity: 0;
+    animation: footprintAnimation 5s linear infinite;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  @keyframes footprintAnimation {
+    0%, 100% {
+      opacity: 0;
+    }
+
+    10%, 90% {
+      opacity: 1;
+    }
+
+    20%, 80% {
+      opacity: 0;
+    }
+  }
+/* кнопки сверху */
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px; 
+    z-index: 9;
+}
+
+.round-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Размер кнопки */
+    height: 40px;
+    border: 2px solid #ccc; /* Граница кнопки */
+    border-radius: 50%; /* Круглая форма */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+    transition: transform 0.2s ease; /* Плавный переход для эффекта увеличения */
+    background: linear-gradient(to bottom right, var(--color-current), white); /* Градиент */
+    z-index: 9;
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.round-button:hover {
+    transform: scale(1.1); /* Увеличение размера при наведении */
+}
+
+.round-button img {
+    width: 20px; /* Размер картинки внутри кнопки */
+    height: 20px;
+}
+/* кнопка справа ближе к центу */
+.question-button{
+    margin-left: auto; /* Перемещает элементы вправо */
+}
+
+/* контейнер знакомства */
+.center-container {
+    margin-top: 25%;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff; /* Белый фон */
+    border: 2px solid #000; /* Черная окантовка */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 20px; /* Отступы внутри контейнера */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень */
+    z-index: 9;
+}
+
+/* поле ввода */
+.name-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#nameInput {
+    width: 70%; /* Ширина поля ввода */
+    padding: 10px; /* Внутренний отступ */
+    border: 2px solid var(--color-current); /* Окантовка */
+    border-radius: 10px; /* Скругленные углы */
+    font-size: 16px; /* Размер шрифта */
+}
+
+#nameInput::placeholder {
+    color: var(--color-current); /* Цвет заголовка для плейсхолдера */
+}
+
+#nameInput:focus {
+    outline: none; /* Убираем рамку фокуса */
+    border-color: var(--color-accent); /* Изменяем цвет окантовки при фокусе */
+}
+#nameInput:focus::placeholder {
+    color: var(--color-accent); /* Изменяем цвет плейсхолдера при фокусе */
+}
+/* нижние кнопки действий */
+.motion-container {
+    position: fixed;
+    bottom: 10px; /* Отступ от нижнего края */
+    left: 50%;
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+    text-align: center;
+    z-index: 9;
+}
+
+.motion-container button {
+    width: 70px; /* Размер кнопки */
+    height: 50px;
+    border: 2px solid #ccc; /* Граница кнопки */
+    border-radius: 20%; /* Круглая форма */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+    transition: transform 0.2s ease; /* Плавный переход для эффекта увеличения */
+    background: linear-gradient(to bottom right, var(--color-current), white); /* Градиент */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.motion-container button:hover {
+    transform: scale(1.1); 
+}
+
+/* всплывающая инструкция */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.paragraph{
+    font-size: 20px;
+    font-family: var(--font-accent);
+    color: var(--color-accent);
+    font-weight: 500;
+    margin: 10;
+}
+
+/* настройки цвета */
+.main-rect{
+    width: 90px;
+    height: 90px;
+    background-color: var(--color-current);
+    align-items: center;
+    border-radius: 10%;
+    margin-left: 45%;
+}
+
+.colorRectContainer{
+    display: flex;
+    position: relative;
+    justify-content: center; /* Размещение по центру по горизонтали */
+    align-items: center; /* Размещение по центру по вертикали */
+}
+
+.color-rect{
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 10%;
+}
+
+.beginContainer{
+    position: relative;
+    margin: 10px; /* Отступ от нижнего края */
+    left: 50%;
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+    text-align: center;
+}
+
+.beginContainer button{
+    width: 70px; /* Размер кнопки */
+    height: 50px;
+    border: 2px solid var(--color-accent); /* Граница кнопки */
+    border-radius: 20%; /* Круглая форма */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+    transition: transform 0.2s ease; /* Плавный переход для эффекта увеличения */
+    background: linear-gradient(to bottom right, var(--color-current), white); /* Градиент */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.beginContainer button:hover {
+    transform: scale(1.1); 
+}

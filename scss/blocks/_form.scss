@@ -1,0 +1,44 @@
+.form{
+
+}
+
+.form_input{
+    height: 50px;
+    padding: 12px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: $white;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in;
+
+    &::placeholder{
+        color: $placeholder;
+    }
+
+    &:focus{
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.form_privacy{
+    font-size: 13px;
+    color: $privicy;
+    text-align: center;
+    line-height: 1.25;
+}
+
+.form_button{
+    height: 50px;
+    padding: 12px;
+    text-align: center;
+    font-weight: 700;
+    color: $white;
+    font-size: 16px;
+    background-color: $accent;
+    transition: background-color 0.2s ease-in;
+    // saturate делает цвет ярче
+    &:hover{
+        background-color: saturate($accent, 10%);
+    }
+
+}

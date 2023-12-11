@@ -1,0 +1,36 @@
+.section-map{
+padding: 180px 0;
+position: relative;
+    // для размещения декор элемента 5
+    &::before{
+        content: "V";
+        // щт половины экрана отступаем еще 550пк(еще половина контейнера)
+        right: calc(50% + 555px);
+        //пододвинуть враво на половину ширины псевдоэлемента (x, y)
+        transform: translate(50%, 0%);
+
+        @include decorNumber;
+        // переопределить отличающиеся значения
+        top: 180px;
+        line-height: 1;
+    }
+    // уменьшение отступов при уменьшении экрана
+    @include mediaTablet{
+        padding: 90px 0;
+    }
+
+}
+
+.section-map_title{
+    margin-bottom: 88px;
+    // уменьшение отступов от заголовка до карты при уменьшении экрана
+    @include mediaTablet{
+        margin-bottom: 44px;
+    }
+}
+
+
+.map{
+    height: 358px;
+    background: #494C51;
+}

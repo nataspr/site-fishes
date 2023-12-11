@@ -1,0 +1,30 @@
+.info{
+    font-size: 18px;
+    position: relative;
+    padding-left: 43px;
+    // отступ слева для тел
+    padding-right: 20px;
+// вложенный селектор - псевдоэлемент
+// при модификаторе такие параметры есть
+    &--tel::before, &--map::before{
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 21px;
+        height: 21px;
+        background-repeat: no-repeat;
+    }
+// при модификаторе (слева) - смена иконки
+    &--tel::before{
+        background-image: url('./../img/header/phone.svg');
+    }
+    &--map::before{
+        background-image: url('./../img/header/map.svg');
+    }
+    // при маленьком экране уменьшится шрифт нижнего текста
+    @mixin mediaTablet{
+       font-size: 14px;
+   }
+
+}

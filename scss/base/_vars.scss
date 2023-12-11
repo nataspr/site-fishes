@@ -1,0 +1,25 @@
+// переменные для шрифтов
+// основной шрифт на странице
+$font-main: 'Raleway', sans-serif;
+// шрифт для заголовков
+$font-accent: 'Playfair Display', serif;
+//шрифт для остального
+$font-secondary:'Roboto', sans-serif;
+
+// Цвета
+// цвет фона
+$fon: #8EA8C6;
+// цвет заголовков
+$accent: #020D12;
+//цвет текста
+$white: #FFFFFF;
+//цвет подвала
+$footer-bg:#5C7189;
+//цвет заполнения имени+тел
+$placeholder: #BEBEBE;
+//цвет приватности
+$privicy: #E7E7E7;
+
+// Media
+// точка перелома на маленький экран
+$tablet: 977px;
