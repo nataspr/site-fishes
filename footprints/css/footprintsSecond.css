@@ -1,0 +1,185 @@
+:root {
+    /* Цвета константы */
+    --color-standart: #EEE5D3;
+    /* голубой */
+    --color-blue: #C4DFFA;
+    /* зеленый */
+    --color-green: #D8E4E0;
+    /*  розовый */
+    --color-pink: #ECCFC1;
+    /* акцент */
+    --color-accent: #F4B3AF;
+    /* текущий цвет - его значение меняется */
+    --color-current: var(--color-standart);
+    /* Шрифты */
+    /* основной шрифт на странице */
+    --font-main: 'Raleway', sans-serif;
+    /* шрифт для заголовков */
+    --font-accent: 'Playfair Display', serif;
+    /* шрифт для остального */
+    --font-secondary: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-current);
+    color: white;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+a {
+    color: white;
+    /* для плавного перехода */
+    transition: color 0.2s ease-in;
+
+    /* при нажатии на ссылку меняется цвет */
+    ::active {
+        color: var(--font-main);
+    }
+}
+
+.container {
+    /* отступы, чтобы при уменьш экрана контент не прилипал */
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1140px;
+    /* контейнер по центру страницы */
+    margin: 0 auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 9;
+}
+
+@media screen and (max-width: 977px) {
+
+    /* при уменьш экрана размер конт тоже уменьшится */
+    .container {
+        max-width: 761px;
+    }
+}
+
+.text-right {
+    text-align: right;
+}
+
+.title {
+    margin: 10px;
+    text-align: center
+}
+
+/* все заголовки 2 на стр */
+.title-2 {
+    font-size: 36px;
+    font-family: var(--font-accent);
+    color: var(--color-accent);
+    font-weight: 700;
+    margin: 0;
+}
+
+/* уменьшение заголовка при уменьшении экрана */
+@media screen and (max-width: 977px) {
+    .title-2 {
+        font-size: 28px;
+    }
+}
+
+.paragraph {
+    font-size: 20px;
+    font-family: var(--font-accent);
+    color: var(--color-accent);
+    font-weight: 500;
+    margin: 10;
+}
+
+/* загрузка уровня */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+}
+
+/* таймер сверху */
+.timer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    z-index: 9;
+}
+
+/* отобразить верный след */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.centerImg{
+    margin-top: 70px;
+}
+
+/* отобразить варианты следов */
+.array-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.answerPicture{
+    margin: 20px;
+}
+/* завершение игры */
+.buttons-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.button-end{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px; /* Размер кнопки */
+    height: 55px;
+    border: 2px solid #ccc; /* Граница кнопки */
+    border-radius: 10%; /* Круглая форма */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+    transition: transform 0.2s ease; /* Плавный переход для эффекта увеличения */
+    background: linear-gradient(to bottom right, var(--color-current), white); /* Градиент */
+    z-index: 9;
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.button-end:hover{
+    transform: scale(1.1);
+}
+
+/* анимация ответов */
+.correct-answer-question{
+    border-color: aquamarine;
+}
+
+.incorrect-answer-question{
+border-color: coral;
+}
