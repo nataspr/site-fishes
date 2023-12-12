@@ -9,6 +9,7 @@ var key = localStorage.getItem("mykey");
 var countdown;
 var curPlayerData = JSON.parse(localStorage.getItem(key));
 var score = curPlayerData.score;
+var newScore = curPlayerData.score;
 console.log(score);
 // Обновляем переменную --color-current по выбору пользователя
 document.documentElement.style.setProperty("--color-current", color);
@@ -243,10 +244,10 @@ setTimeout(() => {
     function checkAnswer(selectedIndex, correctIndex) {
         if (selectedIndex === correctIndex) {
             // Действия для правильного ответа
-            score = score + 1;
+            newScore += 1;
         } else {
             // Действия для неправильного ответа
-            score = score + 0;
+            newScore += 0;
         }
         //вызываем новый вопрос после завершения проверки ответа
         if (correctIndex == footprintImages.length - 1) {
@@ -261,7 +262,7 @@ setTimeout(() => {
     // остановка игры - кончились вопросы
     function endGame() {
         // сохранить результат игрока
-        curPlayerData.score = score;
+        curPlayerData.score = newScore;
         localStorage.setItem(key, JSON.stringify(curPlayerData));
         // Останавливаем таймер
         clearInterval(countdown);
@@ -283,7 +284,7 @@ setTimeout(() => {
 
         var scoreText = document.createElement("p");
         scoreText.classList.add("paragraph");
-        scoreText.textContent = score;
+        scoreText.textContent = newScore;
 
         var btnContent = document.createElement("div");
         btnContent.classList.add("buttons-content");
