@@ -4,14 +4,15 @@ const img3 = "./../img/prints/wolf2.jpg";
 const img4 = "./../img/prints/bear2.jpg";
 
 const footprintImages = [img1, img2, img3, img4];
-var index_answer = [0,1,2,3];
-var index_question = [0,1,2,3];
+var index_answer = [0, 1, 2, 3];
+var index_question = [0, 1, 2, 3];
 var color = localStorage.getItem("mycolor");
 var key = localStorage.getItem("mykey");
 var countdown;
 var curPlayerData = JSON.parse(localStorage.getItem(key));
 var score = curPlayerData.score;
 console.log(score);
+var curQuestion;
 // Обновляем переменную --color-current по выбору пользователя
 document.documentElement.style.setProperty("--color-current", color);
 // номер уровня и инструкция
@@ -117,7 +118,7 @@ function showBadResults() {
     restartButton.addEventListener("click", function () {
         window.location.href = "./../index.html";
         // Обновляем переменную --color-current до стандартного
-        document.documentElement.style.setProperty("--color-current", --color-standart);
+        document.documentElement.style.setProperty("--color-current", --color - standart);
         localStorage.setItem(mykey, "");
         localStorage.setItem(mycolor, "--color-standart");
     });
@@ -135,13 +136,11 @@ function showBadResults() {
     popupBad.style.display = "flex";
 }
 
+
 // все события происходят после закрытия окна 3сек
 setTimeout(() => {
     // Перемешиваем следы перед началом теста
     shuffleArray(index_question);
-    // первый вопрос
-    displayQuestion(footprintImages, 0, index_question);
-
     // перемешивание массива
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -151,10 +150,12 @@ setTimeout(() => {
             array[j] = temp;
         }
     }
+    curQuestion = 0;
     // показ вопросов
+    displayQuestion(footprintImages, curQuestion, index_question);
     // Функция для отображения вопросов
     function displayQuestion(images, i, index_question) {
-        if (i === images.length + 1) {
+        if (curQuestion === images.length) {
             endGame();
         }
         else {
@@ -173,6 +174,7 @@ setTimeout(() => {
             shuffleArray(index_answer);
             // Отобразить массив следов в контейнере
             for (let j = 0; j < images.length; j++) {
+
                 var answerElement = document.createElement("img");
                 answerElement.className = "answerPicture";
                 answerElement.src = images[index_answer[j]];
@@ -233,14 +235,8 @@ setTimeout(() => {
             // Действия для неправильного ответа
             score = score + 0;
         }
-        //вызываем новый вопрос после завершения проверки ответа
-        if (correctIndex == footprintImages.length - 1) {
-            endGame();
-        }
-        else {
-            var nextQuestionIndex = correctIndex + 1;
-            displayQuestion(footprintImages, nextQuestionIndex, index_question);
-        }
+        curQuestion = curQuestion + 1;
+        displayQuestion(footprintImages, curQuestion, index_question);
     }
 
     // остановка игры - кончились вопросы
@@ -286,7 +282,7 @@ setTimeout(() => {
         restartButton.addEventListener("click", function () {
             window.location.href = "./../index.html";
             // Обновляем переменную --color-current до стандартного
-            document.documentElement.style.setProperty("--color-current", --color-standart);
+            document.documentElement.style.setProperty("--color-current", --color - standart);
             localStorage.setItem(mykey, "");
             localStorage.setItem(mycolor, "--color-standart");
         });

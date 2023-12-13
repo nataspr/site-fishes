@@ -3,14 +3,17 @@ const img2 = "./../img/prints/fox2.svg";
 const img3 = "./../img/prints/wolf2.svg";
 const img4 = "./../img/prints/bear2.svg";
 
-var footprintImages = [img1, img2, img3, img4];
+const footprintImages = [img1, img2, img3, img4];
+var index_answer = [0, 1, 2, 3];
+var index_question = [0, 1, 2, 3];
 var color = localStorage.getItem("mycolor");
 var key = localStorage.getItem("mykey");
 var countdown;
 var curPlayerData = JSON.parse(localStorage.getItem(key));
 var score = curPlayerData.score;
 var newScore = curPlayerData.score;
-console.log(score);
+var curQuestion;
+
 // Обновляем переменную --color-current по выбору пользователя
 document.documentElement.style.setProperty("--color-current", color);
 // номер уровня и инструкция
@@ -136,11 +139,6 @@ function showBadResults() {
 
 // все события происходят после закрытия окна 3сек
 setTimeout(() => {
-    // Перемешиваем следы перед началом теста
-    shuffleArray(footprintImages);
-    // первый вопрос
-    displayQuestion(footprintImages, 0);
-
     // перемешивание массива
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -150,10 +148,14 @@ setTimeout(() => {
             array[j] = temp;
         }
     }
+    // Перемешиваем следы перед началом теста
+    shuffleArray(index_question);
+    curQuestion = 0;
     // показ вопросов
+    displayQuestion(footprintImages, curQuestion, index_question);
     // Функция для отображения вопросов
     function displayQuestion(images, i) {
-        if (i === images.length + 1) {
+        if (curQuestion === images.length) {
             endGame();
         }
         else {
@@ -167,9 +169,9 @@ setTimeout(() => {
             var sampleImage = document.createElement("img");
             sampleImage.classList.add("centerImg");
             sampleImage.id = "sample-image";
-            sampleImage.src = images[i];
+            sampleImage.src = images[index_question[i]];
             centerContainer.appendChild(sampleImage);
-
+            shuffleArray(index_answer);
             // Отобразить массив следов в контейнере
             for (let j = 0; j < images.length; j++) {
                 var answerContainer = document.createElement("div");
@@ -181,7 +183,7 @@ setTimeout(() => {
 
                 var answerElement = document.createElement("img");
                 answerElement.className = "answerPicture";
-                answerElement.src = images[j];
+                answerElement.src = images[index_answer[j]];
                 answerElement.alt = "След " + (j + 1);
 
                 // Append the image to the image container
@@ -207,7 +209,7 @@ setTimeout(() => {
 
                 // Проверка ответа при клике
                 answerContainer.addEventListener("click", function () {
-                    checkAnswer(j, i);
+                    checkAnswer(index_answer[j], index_question[i], index_question);
                 });
                 answerContainer.appendChild(answerElement);
                 answerContainer.appendChild(animateClone);
@@ -241,22 +243,16 @@ setTimeout(() => {
     }
 
     // Функция проверки ответа
-    function checkAnswer(selectedIndex, correctIndex) {
+    function checkAnswer(selectedIndex, correctIndex, index_question) {
         if (selectedIndex === correctIndex) {
             // Действия для правильного ответа
-            newScore += 1;
+            score = score + 1;
         } else {
             // Действия для неправильного ответа
-            newScore += 0;
+            score = score + 0;
         }
-        //вызываем новый вопрос после завершения проверки ответа
-        if (correctIndex == footprintImages.length - 1) {
-            endGame();
-        }
-        else {
-            var nextQuestionIndex = correctIndex + 1;
-            displayQuestion(footprintImages, nextQuestionIndex);
-        }
+        curQuestion = curQuestion + 1;
+        displayQuestion(footprintImages, curQuestion, index_question);
     }
 
     // остановка игры - кончились вопросы
@@ -293,7 +289,7 @@ setTimeout(() => {
         nextLevelButton.innerHTML = '<p class="paragraph">Следующий уровень</p>';
         nextLevelButton.classList.add("button-end");
         nextLevelButton.addEventListener("click", function () {
-            window.location.href = "./../html/footprintsSecond.html";
+            window.location.href = "./../html/footprintsThird.html";
         });
 
         var restartButton = document.createElement("button");
