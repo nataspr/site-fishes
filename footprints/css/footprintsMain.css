@@ -157,6 +157,12 @@ a{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень */
     z-index: 9;
 }
+@media screen and (max-width: 977px) {
+    /* при уменьш экрана размер конт тоже уменьшится */
+    .center-container {
+        margin-top: 20%;
+    }
+}
 
 /* поле ввода */
 .name-container{

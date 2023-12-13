@@ -3,7 +3,9 @@ const img2 = "./../img/prints/fox2.jpg";
 const img3 = "./../img/prints/wolf2.jpg";
 const img4 = "./../img/prints/bear2.jpg";
 
-var footprintImages = [img1, img2, img3, img4];
+const footprintImages = [img1, img2, img3, img4];
+var index_answer = [0,1,2,3];
+var index_question = [0,1,2,3];
 var color = localStorage.getItem("mycolor");
 var key = localStorage.getItem("mykey");
 var countdown;
@@ -136,9 +138,9 @@ function showBadResults() {
 // все события происходят после закрытия окна 3сек
 setTimeout(() => {
     // Перемешиваем следы перед началом теста
-    shuffleArray(footprintImages);
+    shuffleArray(index_question);
     // первый вопрос
-    displayQuestion(footprintImages, 0);
+    displayQuestion(footprintImages, 0, index_question);
 
     // перемешивание массива
     function shuffleArray(array) {
@@ -151,7 +153,7 @@ setTimeout(() => {
     }
     // показ вопросов
     // Функция для отображения вопросов
-    function displayQuestion(images, i) {
+    function displayQuestion(images, i, index_question) {
         if (i === images.length + 1) {
             endGame();
         }
@@ -166,14 +168,14 @@ setTimeout(() => {
             var sampleImage = document.createElement("img");
             sampleImage.classList.add("centerImg");
             sampleImage.id = "sample-image";
-            sampleImage.src = images[i];
+            sampleImage.src = images[index_question[i]];
             centerContainer.appendChild(sampleImage);
-
+            shuffleArray(index_answer);
             // Отобразить массив следов в контейнере
             for (let j = 0; j < images.length; j++) {
                 var answerElement = document.createElement("img");
                 answerElement.className = "answerPicture";
-                answerElement.src = images[j];
+                answerElement.src = images[index_answer[j]];
                 answerElement.alt = "След " + (j + 1);
                 // при наведении мыши вызвать функцию handleMouseOver
                 answerElement.addEventListener("mouseover", createMouseOverHandler(answerElement));
@@ -185,7 +187,7 @@ setTimeout(() => {
 
                 // Проверка ответа при клике
                 answerElement.addEventListener("click", function () {
-                    checkAnswer(j, i);
+                    checkAnswer(index_answer[j], index_question[i], index_question);
                 });
 
                 arrayContainer.appendChild(answerElement);
@@ -223,7 +225,7 @@ setTimeout(() => {
     }
 
     // Функция проверки ответа
-    function checkAnswer(selectedIndex, correctIndex) {
+    function checkAnswer(selectedIndex, correctIndex, index_question) {
         if (selectedIndex === correctIndex) {
             // Действия для правильного ответа
             score = score + 1;
@@ -237,7 +239,7 @@ setTimeout(() => {
         }
         else {
             var nextQuestionIndex = correctIndex + 1;
-            displayQuestion(footprintImages, nextQuestionIndex);
+            displayQuestion(footprintImages, nextQuestionIndex, index_question);
         }
     }
 
