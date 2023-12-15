@@ -190,6 +190,7 @@ setTimeout(() => {
                 applyRandomFilter(answerElement);
 
                 // добавить изображению анимацию поворота
+                applyRotation(answerElement);
 
                 // добавить изображению анимацию остановки по длительному нажатию
 
@@ -209,6 +210,18 @@ setTimeout(() => {
         const randomFilterId = filterIds[Math.floor(Math.random() * filterIds.length)];
         imgElement.style.filter = "url(#" + randomFilterId + ")";
     }
+
+    // функция для применения вращения в разные стороны
+    function applyRotation(imgElement) {
+        // Генерируем случайное число (0 или 1)
+        const randomIndex = Math.round(Math.random());
+      
+        // Определяем класс в зависимости от случайного числа
+        const rotationClass = randomIndex === 0 ? 'rot' : 'rot2';
+      
+        // Добавляем выбранный класс к элементу
+        imgElement.classList.add(rotationClass);
+      }
 
     // Функция создания обработчика события для mouseover
     function createMouseOverHandler(element) {

@@ -184,3 +184,47 @@ a {
     display: inline-block;
     margin: 5px;
 }
+
+/* анимация вращения для ответа */
+img.rot {
+    animation: 4s linear 0s normal none infinite running rot;
+    -webkit-animation: 4s linear 0s normal none infinite running rot;
+  }
+  @keyframes rot {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes rot {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* анимация вращения для ответа */
+img.rot2 {
+    animation: 4s linear 0s normal none infinite running rot2;
+    -webkit-animation: 4s linear 0s normal none infinite running rot2;
+  }
+  @keyframes rot2 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  @-webkit-keyframes rot2 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
