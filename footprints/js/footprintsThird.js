@@ -194,7 +194,7 @@ setTimeout(() => {
                 // добавить изображению анимацию остановки по длительному нажатию
 
                 // Проверка ответа при клике
-                answerElement.addEventListener("double click", function () {
+                answerElement.addEventListener("dblclick", function () {
                     checkAnswer(index_answer[j], index_question[i], index_question);
                 });
 
@@ -278,12 +278,9 @@ setTimeout(() => {
         var btnContent = document.createElement("div");
         btnContent.classList.add("buttons-content");
 
-        var nextLevelButton = document.createElement("button");
-        nextLevelButton.innerHTML = '<p class="paragraph">Следующий уровень</p>';
-        nextLevelButton.classList.add("button-end");
-        nextLevelButton.addEventListener("click", function () {
-            window.location.href = "./../html/footprintsThird.html";
-        });
+        var endText = document.createElement("p");
+        endText.classList.add("paragraph");
+        endText.textContent = "Поздравляю! Спасибо за игру)"
 
         var restartButton = document.createElement("button");
         restartButton.innerHTML = '<p class="paragraph">Конец</p>';
@@ -298,7 +295,7 @@ setTimeout(() => {
 
         popupContent.appendChild(title);
         popupContent.appendChild(scoreText);
-        btnContent.appendChild(nextLevelButton);
+        popupContent.appendChild(endText);
         btnContent.appendChild(restartButton);
         popupContent.appendChild(btnContent);
         popup.appendChild(popupContent);

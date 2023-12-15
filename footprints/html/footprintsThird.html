@@ -31,10 +31,8 @@
         <defs>
             <filter id="filter1">
                 <!-- фильтр матрицей -->
-                <fecolormatrix in="SourceGraphic" type="matrix" values="5   0   0 0 -0.2
-                        0 1.2   0 0 -0.2
-                        0   5 1.2 0 -0.2
-                        5   0   0 1    0 " />
+                <feConvolveMatrix order="5" kernelMatrix="1 1 1 1 1 1 -2 -2 -2 1 1 -2 .01 -2 1 1 -2 -2 -2 1 1 1 1 1 1">
+                </feConvolveMatrix>
             </filter>
             <filter id="filter2">
                 <!--  фильтр размытие-->
