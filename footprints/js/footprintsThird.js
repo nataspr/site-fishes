@@ -13,7 +13,7 @@ var curPlayerData = JSON.parse(localStorage.getItem(key));
 var score = curPlayerData.score;
 var newScore = 0;
 var curQuestion;
-
+let rotationStopTimer;
 // Обновляем переменную --color-current по выбору пользователя
 document.documentElement.style.setProperty("--color-current", color);
 
@@ -34,12 +34,15 @@ document.addEventListener("DOMContentLoaded", function () {
     heading.classList.add("title-2");
 
     var paragraph = document.createElement("p");
-    paragraph.innerText = "Дважды кликни по следу, соответствующему образцу";
+    paragraph.innerText = "Дважды кликни по следу, соответствующему образцу.";
     paragraph.classList.add("paragraph");
-
+    var paragraph2 = document.createElement("p");
+    paragraph2.innerText = "При нажатии на след он остановится на время";
+    paragraph2.classList.add("paragraph");
     // Добавляем элементы к всплывающему окну
     popupContent.appendChild(heading);
     popupContent.appendChild(paragraph);
+    popupContent.appendChild(paragraph2);
     welcomePopup.appendChild(popupContent);
 
     // Добавляем всплывающее окно на страницу
@@ -194,6 +197,7 @@ setTimeout(() => {
 
                 // добавить изображению анимацию остановки по длительному нажатию
 
+
                 // Проверка ответа при клике
                 answerElement.addEventListener("dblclick", function () {
                     checkAnswer(index_answer[j], index_question[i], index_question);
@@ -204,8 +208,8 @@ setTimeout(() => {
         }
     }
 
-     // Функция для применения случайного фильтра к изображению
-     function applyRandomFilter(imgElement) {
+    // Функция для применения случайного фильтра к изображению
+    function applyRandomFilter(imgElement) {
         const filterIds = ["filter1", "filter2", "filter3", "filter4"];
         const randomFilterId = filterIds[Math.floor(Math.random() * filterIds.length)];
         imgElement.style.filter = "url(#" + randomFilterId + ")";
@@ -215,13 +219,24 @@ setTimeout(() => {
     function applyRotation(imgElement) {
         // Генерируем случайное число (0 или 1)
         const randomIndex = Math.round(Math.random());
-      
+
         // Определяем класс в зависимости от случайного числа
         const rotationClass = randomIndex === 0 ? 'rot' : 'rot2';
-      
+
         // Добавляем выбранный класс к элементу
         imgElement.classList.add(rotationClass);
-      }
+
+        // Добавляем обработчики событий для начала и остановки вращения
+        imgElement.addEventListener('mousedown', handleRotationStop);
+    }
+
+    // Функция для остановки вращения
+    function handleRotationStop() {
+        this.classList.remove('rot', 'rot2'); // Удаляем все классы вращения
+        rotationStopTimer = setTimeout(() => {
+            applyRotation(this); // Возобновляем вращение после задержки
+        }, 1500); 
+    }
 
     // Функция создания обработчика события для mouseover
     function createMouseOverHandler(element) {

@@ -207,7 +207,7 @@ img.rot {
     }
   }
 
-  /* анимация вращения для ответа */
+  /* анимация обратного вращения для ответа */
 img.rot2 {
     animation: 4s linear 0s normal none infinite running rot2;
     -webkit-animation: 4s linear 0s normal none infinite running rot2;
@@ -226,5 +226,28 @@ img.rot2 {
     }
     100% {
       transform: rotate(-360deg);
+    }
+  }
+
+/* анимация остановки вращения */
+.stop-rot {
+    animation: 1s linear 0s normal forwards stop-rot;
+    -webkit-animation: 1s linear 0s normal forwards stop-rot;
+  }
+  @keyframes stop-rot {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  @-webkit-keyframes stop-rot {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
     }
   }
