@@ -77,7 +77,7 @@ setTimeout(() => {
 
 // остановка игры - время вышло
 function StopGame() {
-    // проигрыш - очки обнуляются
+    // проигрыш - очки остаются прежними
     curPlayerData.score = score;
     localStorage.setItem(key, JSON.stringify(curPlayerData));
     //вывести окно проигрыша
@@ -246,10 +246,10 @@ setTimeout(() => {
     function checkAnswer(selectedIndex, correctIndex, index_question) {
         if (selectedIndex === correctIndex) {
             // Действия для правильного ответа
-            score = score + 1;
+            newScore = newScore + 1;
         } else {
             // Действия для неправильного ответа
-            score = score + 0;
+            newScore = newScore - 1;
         }
         curQuestion = curQuestion + 1;
         displayQuestion(footprintImages, curQuestion, index_question);
@@ -258,7 +258,8 @@ setTimeout(() => {
     // остановка игры - кончились вопросы
     function endGame() {
         // сохранить результат игрока
-        curPlayerData.score = newScore;
+        curPlayerData.score = newScore + score;
+        score = score + newScore;
         localStorage.setItem(key, JSON.stringify(curPlayerData));
         // Останавливаем таймер
         clearInterval(countdown);
@@ -280,7 +281,7 @@ setTimeout(() => {
 
         var scoreText = document.createElement("p");
         scoreText.classList.add("paragraph");
-        scoreText.textContent = newScore;
+        scoreText.textContent = score;
 
         var btnContent = document.createElement("div");
         btnContent.classList.add("buttons-content");
