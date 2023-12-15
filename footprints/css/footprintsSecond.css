@@ -133,7 +133,14 @@ a {
 }
 
 .centerImg{
-    margin-top: 70px;
+    margin-top: 50px;
+}
+
+@media screen and (max-width: 1300px) {
+    /* при уменьш экрана размер конт тоже уменьшится */
+    .centerImg {
+        margin-top: 10px;
+    }
 }
 
 /* отобразить варианты следов */
@@ -142,6 +149,13 @@ a {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+}
+
+@media screen and (max-width: 1400px) {
+    /* при уменьш экрана размер конт тоже уменьшится */
+    .array-container {
+        margin-top: 1px;
+    }
 }
 
 .answerPicture{

@@ -133,9 +133,15 @@ a {
 }
 
 .centerImg{
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
+@media screen and (max-width: 1400px) {
+  /* при уменьш экрана размер конт тоже уменьшится */
+  .centerImg {
+      margin-top: 20px;
+  }
+}
 /* отобразить варианты следов */
 .array-container {
     display: flex;

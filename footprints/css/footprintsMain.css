@@ -157,13 +157,18 @@ a{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень */
     z-index: 9;
 }
-@media screen and (max-width: 977px) {
+@media screen and (max-width: 1300px) {
     /* при уменьш экрана размер конт тоже уменьшится */
     .center-container {
-        margin-top: 20%;
+        margin-top: 15%;
     }
 }
-
+@media screen and (max-width: 970px) {
+    /* при уменьш экрана размер конт тоже уменьшится */
+    .center-container {
+        margin-top: 10%;
+    }
+}
 /* поле ввода */
 .name-container{
     display: flex;
