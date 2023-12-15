@@ -184,16 +184,3 @@ a {
     display: inline-block;
     margin: 5px;
 }
-
-/* Styles for the image containers */
-.imageContainer {
-    position: relative;
-    width: auto; 
-    height: auto; 
-}
-
-/* Styles for the static images */
-.answerPicture img {
-    max-width: 80%;
-    max-height: 80%;
-}
