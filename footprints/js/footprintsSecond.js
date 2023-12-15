@@ -11,7 +11,7 @@ var key = localStorage.getItem("mykey");
 var countdown;
 var curPlayerData = JSON.parse(localStorage.getItem(key));
 var score = curPlayerData.score;
-var newScore = curPlayerData.score;
+var newScore = 0;
 var curQuestion;
 
 // Обновляем переменную --color-current по выбору пользователя
