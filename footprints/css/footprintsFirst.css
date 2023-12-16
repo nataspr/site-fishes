@@ -132,16 +132,15 @@ a {
     height: auto;
 }
 
-.centerImg{
+.centerImg {
     margin-top: 50px;
 }
 
 @media screen and (max-width: 1400px) {
-    /* при уменьш экрана размер конт тоже уменьшится */
     .centerImg {
         margin-top: 20px;
     }
-  }
+}
 
 /* отобразить варианты следов */
 .array-container {
@@ -151,42 +150,50 @@ a {
     margin-top: 20px;
 }
 
-.answerPicture{
+.answerPicture {
     margin: 20px;
 }
+
 /* завершение игры */
-.buttons-content{
+.buttons-content {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5px;
 }
 
-.button-end{
+.button-end {
     margin: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 110px; /* Размер кнопки */
+    width: 110px;
+    /* Размер кнопки */
     height: 55px;
-    border: 2px solid #ccc; /* Граница кнопки */
-    border-radius: 10%; /* Круглая форма */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
-    transition: transform 0.2s ease; /* Плавный переход для эффекта увеличения */
-    background: linear-gradient(to bottom right, var(--color-current), white); /* Градиент */
+    border: 2px solid #ccc;
+    /* Граница кнопки */
+    border-radius: 10%;
+    /* Круглая форма */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Тень */
+    transition: transform 0.2s ease;
+    /* Плавный переход для эффекта увеличения */
+    background: linear-gradient(to bottom right, var(--color-current), white);
+    /* Градиент */
     z-index: 9;
-    cursor: pointer; /* Указатель при наведении */
+    cursor: pointer;
+    /* Указатель при наведении */
 }
 
-.button-end:hover{
+.button-end:hover {
     transform: scale(1.1);
 }
 
 /* анимация ответов */
-.correct-answer-question{
+.correct-answer-question {
     border-color: aquamarine;
 }
 
-.incorrect-answer-question{
-border-color: coral;
+.incorrect-answer-question {
+    border-color: coral;
 }
