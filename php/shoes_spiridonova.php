@@ -83,7 +83,7 @@
 
         // Выводим изображение
         if ($shoe_image !== "") {
-            echo "<img src='$shoe_image' alt='$shoes'>";
+            echo "<img src='$shoe_image' alt='shoes'>";
         }
     }
     ?>
