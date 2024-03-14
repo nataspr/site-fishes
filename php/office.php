@@ -5,6 +5,7 @@ require '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\{Font, Border, Alignment};
 ?>
 
 <head>
@@ -274,6 +275,8 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
                         //Получаем текущий активный лист
                         $sheet = $spreadsheet->getActiveSheet();
                         
+
+
                     } else {
                         echo "Файл не загружен";
                     }
