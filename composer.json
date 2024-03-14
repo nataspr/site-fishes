@@ -1,0 +1,20 @@
+{
+    "name": "spiri/site-fishes",
+    "description": "test project site-fishes",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Spiri\\SiteFishes\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Spiridonova Nataliia",
+            "email": "spiridonova.nataliia@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpword": "^1.2",
+        "phpoffice/phpspreadsheet": "^1.5"
+    }
+}
