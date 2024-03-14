@@ -1043,3 +1043,35 @@ a:hover {
     height: 24px;
     margin-bottom: 5px;
 }
+/* Стилизация кнопок */
+button[type="submit"]{
+    border: 2px solid #CCCCCC; /* Серая граница */
+    border-radius: 20px; /* Скругленные края */
+    padding: 10px 20px; /* Отступы внутри кнопки */
+    background-color: #8EA8C6; /* Цвет фона */
+    cursor: pointer; /* Изменение курсора при наведении */
+    transition: all 0.3s ease; /* Плавное изменение стилей */
+    outline: none; /* Убрать контур фокуса */
+}
+
+/* Стилизация кнопки при наведении */
+button[type="submit"]:hover{
+    background-color: #7b7b7b; /* Изменение цвета фона при наведении */
+}
+
+/* Стилизация кнопки при активации */
+button[type="submit"]:active {
+    transform: translateY(2px); /* Эффект нажатия */
+}
+
+/* Скрытие стандартного внешнего вида кнопки для input[type="file"] */
+input[type="file"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Стилизация текста для кнопки "Выбрать файл" */
+label[for="file"] {
+    cursor: pointer;
+}

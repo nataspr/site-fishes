@@ -46,60 +46,74 @@
             </div>
         </header>
         <main id="main">
-            <div class="form-container">
-                <h1 style="margin-left: 30px; margin-bottom: 30px;">Заказ мебели</h1>
-                <div class="form-group" style="margin-left: 30px;">
-                    <label for="surname">Фамилия:</label>
-                    <input type="text" id="surname" name="surname">
-                </div>
-                <div class="form-group" style="margin-left: 30px;">
-                    <label for="city">Город доставки:</label>
-                    <select id="city" name="city">
-                        <option value="city1">Город 1</option>
-                        <option value="city2">Город 2</option>
-                        <option value="city3">Город 3</option>
-                    </select>
-                </div>
-                <div class="form-group" style="margin-left: 30px;">
-                    <label for="delivery_date">Дата доставки:</label>
-                    <input type="date" id="delivery_date" name="delivery_date">
-                </div>
-                <div class="form-group" style="margin-left: 30px;">
-                    <label for="address">Адрес:</label>
-                    <input type="text" id="address" name="address">
-                </div>
-                <div class="form-group">
-                    <div style="display: flex;">
-                        <div style="flex: 1;">
-                            <label for="color">Выберите цвет мебели:</label><br>
-                            <label><input name="color" type="radio" id="color1" value="Орех">Орех</label><br>
-                            <label><input name="color" type="radio" id="color2" value="Дуб мореный">Дуб мореный</label><br>
-                            <label><input name="color" type="radio" id="color3" value="Палисандр">Палисандр</label><br>
-                            <label><input name="color" type="radio" id="color4" value="Эбеновое дерево">Эбеновое дерево</label><br>
-                            <label><input name="color" type="radio" id="color5" value="Клен">Клен</label><br>
-                            <label><input name="color" type="radio" id="color6" value="Лиственница">Лиственница</label><br>
-                        </div>
-                        <div style="flex: 1;">
-                            <label for="furniture_items">Выберите предметы мебели:</label><br>
-                            <label for="bench"><input type="checkbox" id="bench"> Банкетка</label><br>
-                            <label for="bench"><input type="checkbox" id="bed"> Кровать</label><br>
-                            <label for="bench"><input type="checkbox" id="dresser"> Комод</label><br>
-                            <label for="bench"><input type="checkbox" id="closet"> Шкаф</label><br>
-                            <label for="bench"><input type="checkbox" id="chair"> Стул</label><br>
-                            <label for="bench"><input type="checkbox" id="table"> Стол</label><br>
-                        </div>
-                        <div style="flex: 1;">
-                            <label for="quantity">Количество:</label><br>
-                            <label><input type="number" id="quantity_1" name="quantity_1" min="0"></label>
-                            <label><input type="number" id="quantity_2" name="quantity_2" min="0"></label>
-                            <label><input type="number" id="quantity_3" name="quantity_3" min="0"></label>
-                            <label><input type="number" id="quantity_4" name="quantity_4" min="0"></label>
-                            <label><input type="number" id="quantity_5" name="quantity_5" min="0"></label>
-                            <label><input type="number" id="quantity_6" name="quantity_6" min="0"></label>
+            <form method="post" action="">
+                <div class="form-container">
+                    <h1 style="margin-left: 30px; margin-bottom: 30px;">Заказ мебели</h1>
+                    <div class="form-group" style="margin-left: 30px;">
+                        <label for="surname">Фамилия:</label>
+                        <input type="text" id="surname" name="surname">
+                    </div>
+                    <div class="form-group" style="margin-left: 30px;">
+                        <label for="city">Город доставки:</label>
+                        <select id="city" name="city">
+                            <option value="city1">Санкт-Петербург</option>
+                            <option value="city2">Пермь</option>
+                            <option value="city3">Казань</option>
+                            <option value="city4">Нижний Новгород</option>
+                            <option value="city5">Омутнинск</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-left: 30px;">
+                        <label for="delivery_date">Дата доставки:</label>
+                        <input type="date" id="delivery_date" name="delivery_date">
+                    </div>
+                    <div class="form-group" style="margin-left: 30px;">
+                        <label for="address">Адрес:</label>
+                        <input type="text" id="address" name="address">
+                    </div>
+                    <div class="form-group">
+                        <div style="display: flex;">
+                            <div style="flex: 1;">
+                                <label for="color">Выберите цвет мебели:</label><br>
+                                <label><input name="color" type="radio" id="color1" value="Орех">Орех</label><br>
+                                <label><input name="color" type="radio" id="color2" value="Дуб мореный">Дуб мореный</label><br>
+                                <label><input name="color" type="radio" id="color3" value="Палисандр">Палисандр</label><br>
+                                <label><input name="color" type="radio" id="color4" value="Эбеновое дерево">Эбеновое дерево</label><br>
+                                <label><input name="color" type="radio" id="color5" value="Клен">Клен</label><br>
+                                <label><input name="color" type="radio" id="color6" value="Лиственница">Лиственница</label><br>
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="furniture_items">Выберите предметы мебели:</label><br>
+                                <label for="bench"><input type="checkbox" id="bench"> Банкетка</label><br>
+                                <label for="bench"><input type="checkbox" id="bed"> Кровать</label><br>
+                                <label for="bench"><input type="checkbox" id="dresser"> Комод</label><br>
+                                <label for="bench"><input type="checkbox" id="closet"> Шкаф</label><br>
+                                <label for="bench"><input type="checkbox" id="chair"> Стул</label><br>
+                                <label for="bench"><input type="checkbox" id="table"> Стол</label><br>
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="quantity">Количество:</label><br>
+                                <label><input type="number" id="quantity_1" name="quantity_1" min="0"></label>
+                                <label><input type="number" id="quantity_2" name="quantity_2" min="0"></label>
+                                <label><input type="number" id="quantity_3" name="quantity_3" min="0"></label>
+                                <label><input type="number" id="quantity_4" name="quantity_4" min="0"></label>
+                                <label><input type="number" id="quantity_5" name="quantity_5" min="0"></label>
+                                <label><input type="number" id="quantity_6" name="quantity_6" min="0"></label>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="form-group" style="margin-left: 30px;">
+                        <label for="file">Выберите файл с ценами:  <input type="file" id="file" name="file" accept=".txt"></label>
+                        
+                    </div>
+
+                    <div style="margin-left: 30px; margin-top: 20px;">
+                        <button type="submit">Оформить заказ</button>
+                    </div>
                 </div>
-            </div>
+
+            </form>
             <?php
 
 
