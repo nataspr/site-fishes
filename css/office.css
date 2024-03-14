@@ -993,3 +993,53 @@ a:hover {
   top: 15%;
   border: 1px solid #5C7189;
 }/*# sourceMappingURL=main.css.map */
+
+
+/* для задания заказ мебели */
+.form-container {
+    width: 50%;
+    margin: 0 auto;
+
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input[type="text"],
+.form-group select,
+.form-group input[type="date"],
+.form-group input[type="number"] {
+    width: calc(100% - 10px); /* Отнимаем ширину маргина, чтобы избежать переноса */
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 5px; /* Добавляем небольшой отступ */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-group input[type="radio"] {
+    margin-right: 5px;
+}
+.furniture-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.furniture-item label {
+    margin-right: 10px;
+    vertical-align: middle; /* выравнивание надписи с радиобатоном и чекбоксом */
+}
+#city option {
+    color: #000; /* черный цвет текста */
+}
+
+.form-group input[type="number"] {
+    width: 50%;
+    height: 24px;
+    margin-bottom: 5px;
+}
