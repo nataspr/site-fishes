@@ -269,7 +269,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                         }
                         echo "Стоимость всего заказа: ";
                         print($total_sum);
-                        $random_number = rand (1000,9999); //для накладной
+                        $random_number = rand(1000, 9999); //для накладной
                         // обработка в эксель файл
                         //Создаем экземпляр класса электронной таблицы
                         $spreadsheet = new Spreadsheet();
@@ -282,6 +282,8 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                         $drawing->setPath('../img/furniture/shtrih.jpg');
                         //Указываем ячейку в которой разместим изображение
                         $drawing->setCoordinates('D1');
+                        // отступ по координате X
+                        $drawing->setOffsetX(30);
                         //Передаем объект текущего листа
                         $drawing->setWorksheet($sheet);
                         // увеличить высоту 1 строки
@@ -293,7 +295,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                         $sheet->getColumnDimension('B')->setWidth(50);
                         $sheet->getColumnDimension('C')->setWidth(30);
                         $sheet->getColumnDimension('D')->setWidth(10);
-                        $sheet->getColumnDimension('E')->setWidth(10);
+                        $sheet->getColumnDimension('E')->setWidth(20);
                         $sheet->getColumnDimension('F')->setWidth(10);
                         // объединить ячейки для 2,3 и 4 строки
                         $sheet->mergeCells('A2:F2');
@@ -313,7 +315,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                             ]
                         ]);
                         // добавить название накладной
-                        $sheet->setCellValue('A2', 'Накладная №'. $random_number);
+                        $sheet->setCellValue('A2', 'Накладная №' . $random_number);
                         // строка 3
                         $sheet->getStyle('A3')->applyFromArray([
                             'font' => [
@@ -326,7 +328,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                                 'wrapText' => true,
                             ]
                         ]);
-                        $sheet->setCellValue('A3', 'Адрес получения заказа: '. $city. " ".$address);
+                        $sheet->setCellValue('A3', 'Адрес получения заказа: ' . $city . " " . $address);
                         // строка 4
                         $sheet->getStyle('A4')->applyFromArray([
                             'font' => [
@@ -339,14 +341,131 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                                 'wrapText' => true,
                             ]
                         ]);
-                        $sheet->setCellValue('A4', 'Дата получения заказа: '. $date);
+                        $sheet->setCellValue('A4', 'Дата получения заказа: ' . $date);
                         // добавить штрих
                         $writer = new Xlsx($spreadsheet);
 
                         // ТАБЛИЦА с 6 строки
+                        $startRow = 6;
+                        $numRows = count($furniture) + 2;
+                        // ГРАНИЦЫ
+                        // Устанавливаем границы для каждой ячейки в диапазоне строк
+                        for ($i = $startRow; $i < $startRow + $numRows; $i++) {
+                            $sheet->getStyle('A' . $i . ':F' . $i)->applyFromArray([
+                                'borders' => [
+                                    'allBorders' => [
+                                        'borderStyle' => Border::BORDER_THICK,
+                                    ],
+                                ],
+                            ]);
+                        }
+
+                        // Устанавливаем границы для ячейки в столбце F и строке $i + 1
+                        $sheet->getStyle('F' . ($startRow + $numRows))->applyFromArray([
+                            'borders' => [
+                                'allBorders' => [
+                                    'borderStyle' => Border::BORDER_THICK,
+                                ],
+                            ],
+                        ]);
+
+                        // строка 6
+                        $startRow = 6;
+                        $endColumn = 'F';
+
+                        // Применяем стиль к каждой ячейке в диапазоне A6:F6
+                        for ($column = 'A'; $column <= $endColumn; $column++) {
+                            $cell = $column . $startRow;
+                            $sheet->getStyle($cell)->applyFromArray([
+                                'font' => [
+                                    'name' => 'Arial',
+                                    'bold' => true
+                                ],
+                                'alignment' => [
+                                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                    'vertical' => Alignment::VERTICAL_CENTER,
+                                    'wrapText' => true,
+                                ]
+                            ]);
+                        }
+                        $sheet->setCellValue('A6', '№');
+                        $sheet->setCellValue('B6', 'Наименование товара');
+                        $sheet->setCellValue('C6', 'Цвет');
+                        $sheet->setCellValue('D6', 'Цена');
+                        $sheet->setCellValue('E6', 'Количество');
+                        $sheet->setCellValue('F6', 'Сумма');
+
+                        // столбец A
+                        $startRow = 7;
+                        $endRow = $startRow + count($furniture) - 1; // Конечная строка
+
+                        // Заполняем столбец A числами от 1 до количества элементов в массиве $furniture
+                        for ($i = $startRow; $i <= $endRow; $i++) {
+                            $sheet->setCellValue('A' . $i, $i - $startRow + 1);
+                            $sheet->getStyle('A' . $i)->applyFromArray([
+                                'font' => [
+                                    'name' => 'Arial',
+                                    'bold' => false
+                                ],
+                                'alignment' => [
+                                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                    'vertical' => Alignment::VERTICAL_CENTER,
+                                    'wrapText' => true,
+                                ]
+                            ]);
+                        }
+
+                        // столбец B
+                        for ($i = $startRow; $i <= $endRow; $i++) {
+                            $sheet->setCellValue('B' . $i, $furniture[$i - $startRow]);
+                            $sheet->getStyle('B' . $i)->applyFromArray([
+                                'font' => [
+                                    'name' => 'Arial',
+                                    'bold' => false
+                                ],
+                                'alignment' => [
+                                    'horizontal' => Alignment::HORIZONTAL_LEFT,
+                                    'wrapText' => true,
+                                ]
+                            ]);
+                        }
+
+                        // столбец D
+                        for ($i = $startRow; $i <= $endRow; $i++) {
+                            $price = $prices[$furniture[$i - $startRow]]; //цену для выбранной мебели
+                            $sheet->setCellValue('D' . $i, $price); 
+                            $sheet->getStyle('D' . $i)->applyFromArray([
+                                'font' => [
+                                    'name' => 'Arial',
+                                    'bold' => false
+                                ],
+                                'alignment' => [
+                                    'horizontal' => Alignment::HORIZONTAL_CENTER, 
+                                    'vertical' => Alignment::VERTICAL_CENTER,
+                                    'wrapText' => true,
+                                ]
+                            ]);
+                        }
+                        // столбец E
+                        for ($i = $startRow; $i <= $endRow; $i++) {
+                            $quantity = $non_zero_quantities[$i - $startRow]; //  количество выбранной мебели из массива без нулевых количеств
+                            $sheet->setCellValue('E' . $i, $quantity); 
+                            $sheet->getStyle('E' . $i)->applyFromArray([
+                                'font' => [
+                                    'name' => 'Arial',
+                                    'bold' => false
+                                ],
+                                'alignment' => [
+                                    'horizontal' => Alignment::HORIZONTAL_CENTER, 
+                                    'vertical' => Alignment::VERTICAL_CENTER, 
+                                    'wrapText' => true,
+                                ]
+                            ]);
+                        }
+                        // столбец F
 
                         // сохранение документа
-                        $title="Документ_на_выдачу_" . $random_number;
+                        $title = "Документ_на_выдачу_" . $random_number;
                         $writer->save("../upload/{$title}.xlsx");
                     } else {
                         echo "Файл не загружен";
