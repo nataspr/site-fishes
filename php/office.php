@@ -6,6 +6,7 @@ require '../vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\{Font, Border, Alignment};
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 ?>
 
 <head>
@@ -83,11 +84,11 @@ use PhpOffice\PhpSpreadsheet\Style\{Font, Border, Alignment};
                     <div class="form-group" style="margin-left: 30px;">
                         <label for="city">Город доставки:</label>
                         <select id="city" name="city">
-                            <option value="city1" <?php if ($city == 'city1') echo 'selected'; ?>>Санкт-Петербург</option>
-                            <option value="city2" <?php if ($city == 'city2') echo 'selected'; ?>>Пермь</option>
-                            <option value="city3" <?php if ($city == 'city3') echo 'selected'; ?>>Казань</option>
-                            <option value="city4" <?php if ($city == 'city4') echo 'selected'; ?>>Нижний Новгород</option>
-                            <option value="city5" <?php if ($city == 'city5') echo 'selected'; ?>>Омутнинск</option>
+                            <option value="Санкт-Петербург" <?php if ($city == 'Санкт-Петербург') echo 'selected'; ?>>Санкт-Петербург</option>
+                            <option value="Пермь" <?php if ($city == 'Пермь') echo 'selected'; ?>>Пермь</option>
+                            <option value="Казань" <?php if ($city == 'Казань') echo 'selected'; ?>>Казань</option>
+                            <option value="Нижний Новгород" <?php if ($city == 'Нижний Новгород') echo 'selected'; ?>>Нижний Новгород</option>
+                            <option value="Омутнинск" <?php if ($city == 'Омутнинск') echo 'selected'; ?>>Омутнинск</option>
                         </select>
                     </div>
                     <!-- выбор даты -->
@@ -268,15 +269,85 @@ use PhpOffice\PhpSpreadsheet\Style\{Font, Border, Alignment};
                         }
                         echo "Стоимость всего заказа: ";
                         print($total_sum);
-
+                        $random_number = rand (1000,9999); //для накладной
                         // обработка в эксель файл
                         //Создаем экземпляр класса электронной таблицы
                         $spreadsheet = new Spreadsheet();
                         //Получаем текущий активный лист
                         $sheet = $spreadsheet->getActiveSheet();
-                        
 
+                        //С помощью класса Drawing можно осуществлять вставку картинок
+                        $drawing = new Drawing();
+                        //Указываем путь до картинки, которая должна быть расположена
+                        $drawing->setPath('../img/furniture/shtrih.jpg');
+                        //Указываем ячейку в которой разместим изображение
+                        $drawing->setCoordinates('D1');
+                        //Передаем объект текущего листа
+                        $drawing->setWorksheet($sheet);
+                        // увеличить высоту 1 строки
+                        $sheet->getRowDimension(1)->setRowHeight(65);
+                        // увеличить высоту 2 строки
+                        $sheet->getRowDimension(2)->setRowHeight(30);
+                        // изменить ширину ячеек
+                        $sheet->getColumnDimension('A')->setWidth(10);
+                        $sheet->getColumnDimension('B')->setWidth(50);
+                        $sheet->getColumnDimension('C')->setWidth(30);
+                        $sheet->getColumnDimension('D')->setWidth(10);
+                        $sheet->getColumnDimension('E')->setWidth(10);
+                        $sheet->getColumnDimension('F')->setWidth(10);
+                        // объединить ячейки для 2,3 и 4 строки
+                        $sheet->mergeCells('A2:F2');
+                        $sheet->mergeCells('A3:F3');
+                        $sheet->mergeCells('A4:F4');
+                        // жирный и выравнивание по центру у навания
+                        $sheet->getStyle('A2')->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => true,
+                                'size' => 16
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                'vertical' => Alignment::VERTICAL_CENTER,
+                                'wrapText' => true,
+                            ]
+                        ]);
+                        // добавить название накладной
+                        $sheet->setCellValue('A2', 'Накладная №'. $random_number);
+                        // строка 3
+                        $sheet->getStyle('A3')->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => false
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                'vertical' => Alignment::VERTICAL_CENTER,
+                                'wrapText' => true,
+                            ]
+                        ]);
+                        $sheet->setCellValue('A3', 'Адрес получения заказа: '. $city. " ".$address);
+                        // строка 4
+                        $sheet->getStyle('A4')->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => false
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                'vertical' => Alignment::VERTICAL_CENTER,
+                                'wrapText' => true,
+                            ]
+                        ]);
+                        $sheet->setCellValue('A4', 'Дата получения заказа: '. $date);
+                        // добавить штрих
+                        $writer = new Xlsx($spreadsheet);
 
+                        // ТАБЛИЦА с 6 строки
+
+                        // сохранение документа
+                        $title="Документ_на_выдачу_" . $random_number;
+                        $writer->save("../upload/{$title}.xlsx");
                     } else {
                         echo "Файл не загружен";
                     }
