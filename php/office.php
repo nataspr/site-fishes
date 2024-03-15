@@ -270,6 +270,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                         echo "Стоимость всего заказа: ";
                         print($total_sum);
                         $random_number = rand(1000, 9999); //для накладной
+
                         // обработка в эксель файл
                         //Создаем экземпляр класса электронной таблицы
                         $spreadsheet = new Spreadsheet();
@@ -433,14 +434,14 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                         // столбец D
                         for ($i = $startRow; $i <= $endRow; $i++) {
                             $price = $prices[$furniture[$i - $startRow]]; //цену для выбранной мебели
-                            $sheet->setCellValue('D' . $i, $price); 
+                            $sheet->setCellValue('D' . $i, $price);
                             $sheet->getStyle('D' . $i)->applyFromArray([
                                 'font' => [
                                     'name' => 'Arial',
                                     'bold' => false
                                 ],
                                 'alignment' => [
-                                    'horizontal' => Alignment::HORIZONTAL_CENTER, 
+                                    'horizontal' => Alignment::HORIZONTAL_CENTER,
                                     'vertical' => Alignment::VERTICAL_CENTER,
                                     'wrapText' => true,
                                 ]
@@ -449,20 +450,125 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                         // столбец E
                         for ($i = $startRow; $i <= $endRow; $i++) {
                             $quantity = $non_zero_quantities[$i - $startRow]; //  количество выбранной мебели из массива без нулевых количеств
-                            $sheet->setCellValue('E' . $i, $quantity); 
+                            $sheet->setCellValue('E' . $i, $quantity);
                             $sheet->getStyle('E' . $i)->applyFromArray([
                                 'font' => [
                                     'name' => 'Arial',
                                     'bold' => false
                                 ],
                                 'alignment' => [
-                                    'horizontal' => Alignment::HORIZONTAL_CENTER, 
-                                    'vertical' => Alignment::VERTICAL_CENTER, 
+                                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                    'vertical' => Alignment::VERTICAL_CENTER,
                                     'wrapText' => true,
                                 ]
                             ]);
                         }
-                        // столбец F
+                        // столбец F - формула ПРОИЗВ из эксель = количество*цена
+                        for ($i = $startRow; $i <= $endRow; $i++) {
+                            $sheet->setCellValue('F' . $i, '=D' . $i . '*E' . $i); // Устанавливаем формулу ПРОИЗВ для каждой строки
+                            // =D8*E8 например так
+                            $sheet->getStyle('F' . $i)->applyFromArray([
+                                'font' => [
+                                    'name' => 'Arial',
+                                    'bold' => false
+                                ],
+                                'alignment' => [
+                                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                    'vertical' => Alignment::VERTICAL_CENTER,
+                                    'wrapText' => true,
+                                ]
+                            ]);
+                        }
+
+                        // строка Цвет
+                        $colorRow = $startRow + count($furniture) - 1 + 1; //отсчет стартовой строки цвета в зависимости от строки, которая была последней
+                        // объединить ячейки D и E
+                        $sheet->mergeCells('D' . $colorRow . ':E' . $colorRow);
+                        // увеличить высоту строки
+                        $sheet->getRowDimension($colorRow)->setRowHeight(85);
+                        // название цвета
+                        $sheet->setCellValue('B' . $colorRow, "Цвет: " . $color);
+                        $sheet->getStyle('B' . $colorRow)->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => false
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_LEFT,
+                                'vertical' => Alignment::VERTICAL_CENTER,
+                                'wrapText' => true,
+                            ]
+                        ]);
+                        // подобрать картинку и вставить картинку
+                        $tree_image;
+                        switch ($color) {
+                            case 'Орех':
+                                // Выбрать url картинки дерева
+                                $tree_image = "../img/furniture/nut.png";
+                                break;
+                            case 'Дуб мореный':
+                                // Выбрать url картинки дерева
+                                $tree_image = "../img/furniture/oak.png";
+                                break;
+                            case 'Палисандр':
+                                // Выбрать url картинки дерева
+                                $tree_image = "../img/furniture/rosewood.png";
+                                break;
+                            case 'Эбеновое дерево':
+                                // Выбрать url картинки дерева
+                                $tree_image = "../img/furniture/ebony.png";
+                                break;
+                            case 'Клен':
+                                // Выбрать url картинки дерева
+                                $tree_image = "../img/furniture/maple.png";
+                                break;
+                            case 'Лиственница':
+                                // Выбрать url картинки дерева
+                                $tree_image = "../img/furniture/larch.png";
+                                break;
+                            default:
+                                $tree_image = "no_img";
+                                break;
+                        }
+                        $drawing_tree = new Drawing();
+                        $drawing_tree->setPath($tree_image);
+                        $drawing_tree->setCoordinates('C' . $colorRow);
+                        // Устанавливаем смещение для изображения
+                        $drawing_tree->setOffsetX(55);
+                        $drawing_tree->setOffsetY(10);
+                        $drawing_tree->setWorksheet($sheet);
+                        // ввести коэффициент наценки
+                        $sheet->setCellValue('D' . $colorRow, $color_price);
+                        $sheet->getStyle('D' . $colorRow)->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => false
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                'vertical' => Alignment::VERTICAL_CENTER,
+                                'wrapText' => true,
+                            ]
+                        ]);
+                        // посчитать общую сумму без наценки
+                        $sheet->setCellValue('F' . $colorRow, '=SUM(F' . $startRow . ':F' . $endRow . ')');
+                        $sheet->getStyle('F' . $colorRow)->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => false
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                'vertical' => Alignment::VERTICAL_CENTER,
+                                'wrapText' => true,
+                            ]
+                        ]);
+                        // строка ИТОГ
+                        
+                        // объединить ячейки
+
+                        // подсчет суммы с наценкой
+
 
                         // сохранение документа
                         $title = "Документ_на_выдачу_" . $random_number;
