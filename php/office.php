@@ -676,10 +676,11 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                             ]
                         ]);
                         $sheet->getStyle('A' . ($garanteeRow + 2))->applyFromArray($styleArray2);
-                        
+
                         // сохранение документа
                         $title = "Документ_на_выдачу_" . $random_number;
                         $writer->save("../upload/{$title}.xlsx");
+                    
                     } else {
                         echo "Файл не загружен";
                     }
