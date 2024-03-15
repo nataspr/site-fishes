@@ -564,12 +564,119 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                             ]
                         ]);
                         // строка ИТОГ
-                        
+                        $finalSumRow = $colorRow + 1;
                         // объединить ячейки
-
+                        $sheet->mergeCells('A' . $finalSumRow . ':E' . $finalSumRow);
                         // подсчет суммы с наценкой
+                        $sheet->setCellValue('F' . $finalSumRow, '=F' . $colorRow . '*D' . $colorRow);
+                        $sheet->getStyle('F' . $finalSumRow)->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => true
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                'vertical' => Alignment::VERTICAL_CENTER,
+                                'wrapText' => true,
+                            ]
+                        ]);
+                        $sheet->getStyle('A' . $finalSumRow)->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => true
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                                'vertical' => Alignment::VERTICAL_CENTER,
+                                'wrapText' => true,
+                            ]
+                        ]);
+                        $sheet->setCellValue('A' . $finalSumRow, 'Итого: ');
 
+                        // строка ФРАЗА итоговая
+                        $phraseRow = $finalSumRow + 3;
+                        $sheet->mergeCells('A' . $phraseRow . ':F' . $phraseRow);
+                        $sheet->getStyle('A' . $phraseRow)->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => false
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_LEFT,
+                                'vertical' => Alignment::VERTICAL_CENTER,
+                                'wrapText' => true,
+                            ]
+                        ]);
 
+                        $sheet->setCellValue('A' . $phraseRow, 'Всего наименований ' . count($furniture) . ', на сумму ' . $total_sum . ',00 руб');
+
+                        // информация о гарантийном обслуживании
+                        $garanteeRow = $phraseRow + 2;
+                        $lastRow = $garanteeRow + 19;
+
+                        // Путь к файлу с информацией о гарантийном обслуживании
+                        $garanteeInfoFile = '../files/garantee.txt';
+
+                        // Читаем содержимое файла
+                        $fileGarantee_contents = file_get_contents($garanteeInfoFile);
+
+                        // Разбиваем текст на строки
+                        $lines = explode("\n", $fileGarantee_contents);
+
+                        // Объединяем ячейки
+                        $sheet->mergeCells('A' . $garanteeRow . ':F' . ($garanteeRow + 1));
+
+                        $sheet->mergeCells('A' . ($garanteeRow + 2) . ':F' . $lastRow);
+
+                        // Помещаем первую строку в одну ячейку
+                        $sheet->setCellValue('A' . $garanteeRow, $lines[0]);
+
+                        // Применяем стиль к каждой ячейке в объединенной области
+
+                        $sheet->getStyle('A' . $garanteeRow)->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => true
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_LEFT,
+                                'vertical' => Alignment::VERTICAL_TOP,
+                                'wrapText' => true,
+                            ]
+                        ]);
+                        // ОТСУТСТВИЕ СТИЛЯ ГРАНИЦ
+                        $styleArray = [
+                            'borders' => [
+                                'bottom' => [
+                                    'borderStyle' => Border::BORDER_NONE, // Установка стиля границы на "нет границы"
+                                ],
+                            ],
+                        ];
+                        $styleArray2 = [
+                            'borders' => [
+                                'top' => [
+                                    'borderStyle' => Border::BORDER_NONE, // Установка стиля границы на "нет границы"
+                                ],
+                            ],
+                        ];
+                        $sheet->getStyle('A' . $garanteeRow)->applyFromArray($styleArray);
+                        // Помещаем остальные строки в другую ячейку
+                        $otherLines = array_slice($lines, 1); // Удаляем первую строку
+                        $otherText = implode("\n", $otherLines); // Соединяем остальные строки
+                        $sheet->setCellValue('A' . ($garanteeRow + 2), $otherText);
+                        $sheet->getStyle('A' . ($garanteeRow + 2))->applyFromArray([
+                            'font' => [
+                                'name' => 'Arial',
+                                'bold' => false
+                            ],
+                            'alignment' => [
+                                'horizontal' => Alignment::HORIZONTAL_LEFT,
+                                'vertical' => Alignment::VERTICAL_TOP,
+                                'wrapText' => true,
+                            ]
+                        ]);
+                        $sheet->getStyle('A' . ($garanteeRow + 2))->applyFromArray($styleArray2);
+                        
                         // сохранение документа
                         $title = "Документ_на_выдачу_" . $random_number;
                         $writer->save("../upload/{$title}.xlsx");
