@@ -680,7 +680,11 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                         // сохранение документа
                         $title = "Документ_на_выдачу_" . $random_number;
                         $writer->save("../upload/{$title}.xlsx");
-                        echo "<br><p>{$title} сохранен</p>";
+                        echo "<br><p>{$title} сохранен</p>"; //по умолчанию в папку и вывод названия на страницу
+
+                        // скачать в другую папку по ссылке - по желанию
+                        // Создаем ссылку для скачивания
+                        $download_link = "../upload/{$title}.xlsx";
                     } else {
                         echo "Файл не загружен";
                     }
@@ -691,6 +695,14 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 
 
             ?>
+            <div>
+                <?php
+                // Если существует ссылка для скачивания, отображаем ее
+                if (isset($download_link)) {
+                    echo "<a href=\"{$download_link}\" download=\"{$title}\">Скачать документ</a>";
+                }
+                ?>
+            </div>
         </main>
         <footer class="footer">
             <div class="container">
