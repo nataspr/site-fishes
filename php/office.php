@@ -680,7 +680,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
                         // сохранение документа
                         $title = "Документ_на_выдачу_" . $random_number;
                         $writer->save("../upload/{$title}.xlsx");
-                    
+                        echo "<br><p>{$title} сохранен</p>";
                     } else {
                         echo "Файл не загружен";
                     }
